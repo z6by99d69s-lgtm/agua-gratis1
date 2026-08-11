@@ -71,8 +71,21 @@ addEventListener("resize",resize);resize();
 new GLTFLoader().load(MODEL_URL,g=>{
  model=g.scene;
  model.traverse((obj) => {
-  if (obj.isMesh) {
-    console.log("MESH:", obj.name, "MATERIAL:", obj.material?.name);
+  if (!obj.isMesh) return;
+
+  if (obj.name === "body") {
+    obj.material = new THREE.MeshPhysicalMaterial({
+      color: 0xffffff,
+      transparent: true,
+      transmission: 0.82,
+      opacity: 0.72,
+      roughness: 0.12,
+      metalness: 0,
+      ior: 1.47,
+      thickness: 0.12,
+      envMapIntensity: 1.6,
+      side: THREE.DoubleSide
+    });
   }
 });
  normalizeUp(model);

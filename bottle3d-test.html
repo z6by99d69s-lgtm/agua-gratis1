@@ -32,7 +32,7 @@ const camera=new THREE.PerspectiveCamera(32,1,.01,1000);
 const renderer=new THREE.WebGLRenderer({antialias:true});
 renderer.setPixelRatio(Math.min(devicePixelRatio,2));
 renderer.outputColorSpace=THREE.SRGBColorSpace;
-renderer.toneMapping=THREE.ACESFilmicToneMapping; renderer.toneMappingExposure=1.1;
+renderer.toneMapping=THREE.ACESFilmicToneMapping; renderer.toneMappingExposure=0.75;
 stage.prepend(renderer.domElement);
 
 const pmrem=new THREE.PMREMGenerator(renderer);

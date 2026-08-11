@@ -151,17 +151,24 @@
       gap: 28px;
     }
 
-    .brand {
-      display: inline-flex;
-      flex-direction: column;
-      color: var(--blue);
-      font-family: "Space Grotesk", sans-serif;
-      font-size: 1.04rem;
-      font-weight: 700;
-      line-height: 0.92;
-      letter-spacing: -0.04em;
-    }
+  .brand img {
+  display: block;
+  width: auto;
+  height: 42px;
+  object-fit: contain;
+}
 
+.brand {
+  display: inline-flex;
+  flex-direction: column;
+  color: var(--blue);
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.04rem;
+  font-weight: 700;
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+}
+   
     .brand span:last-child {
       color: var(--blue-dark);
       margin-top: 3px;
@@ -188,19 +195,17 @@
     .nav-page-links {
       display: flex;
       align-items: center;
-      gap: 12px;
-      margin-left: 8px;
+      gap: 24px;
+      margin-left: 0;
     }
 
     .nav-page-links a {
       font-size: 0.92rem;
-      font-weight: 700;
+      font-weight: 600;
       color: var(--blue-dark);
     }
 
-    .nav-page-links a.secondary {
-      color: var(--text-soft);
-    }
+    
 
     .menu-button {
       width: 44px;
@@ -1072,7 +1077,9 @@
       .navbar-inner {
         min-height: 68px;
       }
-
+.brand img {
+  height: 36px;
+}
       .nav-links,
       .nav-page-links {
         display: none;
@@ -1313,10 +1320,12 @@
   <header class="navbar">
     <div class="container navbar-inner">
 
-      <a class="brand" href="index.html" aria-label="Agua Gratis">
-        <span>AGUA</span>
-        <span>GRATIS</span>
-      </a>
+    <a class="brand" href="index.html" aria-label="Agua Gratis">
+  <img
+    src="logo-horizontal.png"
+    alt="Agua Gratis"
+  >
+</a>
 
       <nav class="nav-links" aria-label="Navegación principal">
         <a href="#como-funciona">Cómo funciona</a>

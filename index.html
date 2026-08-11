@@ -32,17 +32,12 @@
       --text-soft: #64748B;
       --muted: #94A3B8;
       --cyan: #38D9FF;
-      --success: #A7F3D0;
-      --error: #DC2626;
 
       --radius: 22px;
       --radius-small: 14px;
 
-      --shadow:
-        0 18px 45px rgba(11, 31, 68, 0.08);
-
-      --shadow-soft:
-        0 10px 28px rgba(11, 31, 68, 0.06);
+      --shadow: 0 18px 45px rgba(11, 31, 68, 0.08);
+      --shadow-soft: 0 10px 28px rgba(11, 31, 68, 0.06);
 
       --max-width: 1200px;
     }
@@ -72,20 +67,9 @@
       text-decoration: none;
     }
 
-    button,
-    input,
-    textarea,
-    select {
-      font: inherit;
-    }
-
     button {
+      font: inherit;
       cursor: pointer;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
     }
 
     h1,
@@ -109,15 +93,15 @@
     }
 
     .section {
-      padding: 112px 0;
-      scroll-margin-top: 90px;
+      padding: 110px 0;
+      scroll-margin-top: 88px;
     }
 
     .section-soft {
       background: var(--soft);
     }
 
-    .section-blue-light {
+    .section-blue {
       background: var(--blue-light);
     }
 
@@ -127,32 +111,35 @@
       color: var(--blue);
       font-size: 0.78rem;
       font-weight: 800;
-      letter-spacing: 0.09em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
     }
 
     .section-title {
+      max-width: 760px;
       margin-bottom: 20px;
-      font-size: clamp(2.3rem, 4.4vw, 3.8rem);
+      font-size: clamp(2.35rem, 4.4vw, 3.8rem);
       line-height: 1.02;
     }
 
     .section-copy {
-      max-width: 600px;
-      margin-bottom: 0;
+      max-width: 610px;
+      margin: 0;
       color: var(--text-soft);
-      font-size: 1.05rem;
+      font-size: 1.03rem;
       line-height: 1.7;
     }
 
-    /* NAVBAR */
+    /* =========================
+       NAVBAR
+    ========================= */
 
     .navbar {
       position: sticky;
       top: 0;
       z-index: 1000;
       border-bottom: 1px solid rgba(238, 242, 247, 0.9);
-      background: rgba(255, 255, 255, 0.86);
+      background: rgba(255, 255, 255, 0.88);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
     }
@@ -161,7 +148,6 @@
       min-height: 76px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
       gap: 28px;
     }
 
@@ -170,7 +156,7 @@
       flex-direction: column;
       color: var(--blue);
       font-family: "Space Grotesk", sans-serif;
-      font-size: 1.05rem;
+      font-size: 1.04rem;
       font-weight: 700;
       line-height: 0.92;
       letter-spacing: -0.04em;
@@ -184,7 +170,7 @@
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 30px;
+      gap: 28px;
       margin-left: auto;
     }
 
@@ -199,8 +185,21 @@
       color: var(--blue);
     }
 
-    .nav-cta {
-      margin-left: 12px;
+    .nav-page-links {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-left: 8px;
+    }
+
+    .nav-page-links a {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--blue-dark);
+    }
+
+    .nav-page-links a.secondary {
+      color: var(--text-soft);
     }
 
     .menu-button {
@@ -209,10 +208,11 @@
       display: none;
       align-items: center;
       justify-content: center;
+      margin-left: auto;
       border: 1px solid var(--border-strong);
       border-radius: 13px;
-      background: var(--white);
       color: var(--blue-dark);
+      background: var(--white);
     }
 
     .menu-button svg {
@@ -224,7 +224,9 @@
       display: none;
     }
 
-    /* BUTTONS */
+    /* =========================
+       BUTTONS
+    ========================= */
 
     .button {
       min-height: 50px;
@@ -240,6 +242,7 @@
         transform 180ms ease,
         box-shadow 180ms ease,
         border-color 180ms ease,
+        color 180ms ease,
         background 180ms ease;
     }
 
@@ -268,7 +271,9 @@
       border-color: var(--blue);
     }
 
-    /* HERO */
+    /* =========================
+       HERO
+    ========================= */
 
     .hero {
       position: relative;
@@ -278,10 +283,10 @@
       overflow: hidden;
       background:
         radial-gradient(
-          circle at 76% 48%,
-          rgba(234, 242, 255, 0.95) 0%,
-          rgba(234, 242, 255, 0.55) 24%,
-          rgba(255, 255, 255, 0) 52%
+          circle at 78% 48%,
+          rgba(234, 242, 255, 0.98) 0%,
+          rgba(234, 242, 255, 0.62) 23%,
+          rgba(255, 255, 255, 0) 53%
         ),
         var(--white);
     }
@@ -291,20 +296,21 @@
       display: grid;
       grid-template-columns: 45% 55%;
       align-items: center;
-      gap: 20px;
-      padding: 52px 0 72px;
+      gap: 26px;
+      padding: 58px 0 76px;
     }
 
     .hero-content {
       position: relative;
       z-index: 2;
-      transform: translateY(-22px);
+      padding-left: 34px;
+      transform: translateY(-18px);
     }
 
     .hero-eyebrow {
       margin-bottom: 18px;
       color: var(--blue);
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 800;
       letter-spacing: 0.1em;
       text-transform: uppercase;
@@ -313,8 +319,8 @@
     .hero h1 {
       max-width: 650px;
       margin-bottom: 24px;
-      font-size: clamp(4rem, 6.5vw, 6rem);
-      line-height: 0.94;
+      font-size: clamp(4rem, 6.6vw, 6.1rem);
+      line-height: 0.93;
     }
 
     .hero-description {
@@ -322,7 +328,7 @@
       margin-bottom: 30px;
       color: var(--text);
       font-size: clamp(1.08rem, 1.7vw, 1.28rem);
-      line-height: 1.6;
+      line-height: 1.58;
     }
 
     .hero-actions {
@@ -337,7 +343,7 @@
       gap: 8px;
       margin-top: 20px;
       color: var(--muted);
-      font-size: 0.88rem;
+      font-size: 0.87rem;
     }
 
     .hero-location svg {
@@ -356,42 +362,52 @@
 
     .product-glow {
       position: absolute;
-      width: 520px;
-      height: 520px;
+      width: 540px;
+      height: 540px;
       border-radius: 50%;
       background:
         radial-gradient(
           circle,
           rgba(234, 242, 255, 0.98) 0%,
-          rgba(21, 93, 252, 0.08) 55%,
-          transparent 72%
+          rgba(21, 93, 252, 0.08) 56%,
+          transparent 73%
         );
     }
 
-    /* PLACEHOLDER DE BOTELLA
-       Se reemplazará posteriormente por Bottle3D. */
+    /* PLACEHOLDER TEMPORAL DE BOTELLA */
+
+    .bottle-shadow {
+      position: absolute;
+      z-index: 1;
+      bottom: 32px;
+      width: 320px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(11, 31, 68, 0.11);
+      filter: blur(18px);
+    }
 
     .bottle-placeholder {
       position: relative;
       z-index: 2;
       width: 270px;
       height: 555px;
-      border: 1px solid rgba(148, 163, 184, 0.32);
+      border: 1px solid rgba(148, 163, 184, 0.3);
       border-radius: 74px 74px 48px 48px;
       background:
         linear-gradient(
           90deg,
-          rgba(255, 255, 255, 0.28),
+          rgba(255, 255, 255, 0.24),
           rgba(255, 255, 255, 0.92) 16%,
-          rgba(234, 242, 255, 0.38) 42%,
-          rgba(255, 255, 255, 0.86) 68%,
-          rgba(234, 242, 255, 0.22)
+          rgba(234, 242, 255, 0.34) 43%,
+          rgba(255, 255, 255, 0.85) 70%,
+          rgba(234, 242, 255, 0.2)
         );
       box-shadow:
-        inset 18px 0 26px rgba(255, 255, 255, 0.7),
+        inset 18px 0 26px rgba(255, 255, 255, 0.68),
         inset -18px 0 28px rgba(21, 93, 252, 0.05),
         0 32px 70px rgba(11, 31, 68, 0.12);
-      transform: rotate(-3deg);
+      transform: rotate(-2deg);
     }
 
     .bottle-cap {
@@ -401,7 +417,7 @@
       width: 112px;
       height: 56px;
       transform: translateX(-50%);
-      border: 1px solid rgba(148, 163, 184, 0.25);
+      border: 1px solid rgba(148, 163, 184, 0.24);
       border-radius: 18px 18px 22px 22px;
       background:
         repeating-linear-gradient(
@@ -423,7 +439,7 @@
       transform: translateX(-50%);
       border: 1px solid rgba(148, 163, 184, 0.2);
       border-radius: 20px;
-      background: rgba(255, 255, 255, 0.52);
+      background: rgba(255, 255, 255, 0.5);
     }
 
     .bottle-label {
@@ -431,7 +447,7 @@
       top: 150px;
       right: 17px;
       left: 17px;
-      min-height: 330px;
+      min-height: 322px;
       padding: 24px 18px;
       border: 1px solid rgba(148, 163, 184, 0.25);
       border-radius: 24px;
@@ -456,21 +472,21 @@
 
     .bottle-small {
       color: var(--muted);
-      font-size: 0.67rem;
+      font-size: 0.66rem;
       font-weight: 800;
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
 
-    .placeholder-slots {
-      margin-top: 26px;
+    .placeholder-front {
+      margin-top: 28px;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 9px;
+      gap: 10px;
     }
 
-    .placeholder-slot {
-      min-height: 74px;
+    .front-slot {
+      min-height: 88px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -478,8 +494,15 @@
       border-radius: 13px;
       color: var(--blue);
       background: rgba(234, 242, 255, 0.55);
-      font-size: 0.72rem;
+      font-size: 0.75rem;
       font-weight: 800;
+    }
+
+    .placeholder-back-note {
+      margin-top: 14px;
+      color: var(--text-soft);
+      font-size: 0.7rem;
+      line-height: 1.4;
     }
 
     .bottle-spec {
@@ -493,28 +516,17 @@
       text-align: center;
     }
 
-    .bottle-shadow {
-      position: absolute;
-      z-index: 1;
-      bottom: 38px;
-      width: 330px;
-      height: 42px;
-      border-radius: 50%;
-      background: rgba(11, 31, 68, 0.12);
-      filter: blur(18px);
-    }
-
     .hero-callout {
       position: absolute;
       z-index: 3;
       right: 2%;
-      top: 46%;
+      top: 47%;
       padding: 13px 16px;
       border: 1px solid var(--border);
       border-radius: 15px;
-      background: rgba(255, 255, 255, 0.94);
-      box-shadow: var(--shadow-soft);
       color: var(--blue-dark);
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: var(--shadow-soft);
       font-size: 0.88rem;
       font-weight: 700;
     }
@@ -522,17 +534,19 @@
     .next-section-hint {
       position: absolute;
       right: 0;
-      bottom: 16px;
+      bottom: 18px;
       left: 0;
       color: var(--muted);
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       text-align: center;
     }
 
-    /* CÓMO FUNCIONA */
+    /* =========================
+       CÓMO FUNCIONA
+    ========================= */
 
     .process-header {
-      max-width: 780px;
+      max-width: 860px;
       margin-bottom: 70px;
     }
 
@@ -585,33 +599,30 @@
     }
 
     .process-step p {
-      margin-bottom: 0;
+      margin: 0;
+      max-width: 300px;
       color: var(--text-soft);
       line-height: 1.65;
     }
 
-    /* LA BOTELLA */
+    /* =========================
+       LA BOTELLA
+    ========================= */
 
     .bottle-section {
-      background:
-        radial-gradient(
-          circle at 25% 48%,
-          rgba(21, 93, 252, 0.08),
-          transparent 34%
-        ),
-        var(--blue-light);
+      background: var(--blue-light);
     }
 
     .bottle-section-grid {
       display: grid;
-      grid-template-columns: 48% 52%;
+      grid-template-columns: 50% 50%;
       align-items: center;
-      gap: 72px;
+      gap: 54px;
     }
 
     .bottle-stage {
-      min-height: 650px;
       position: relative;
+      min-height: 630px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -621,444 +632,137 @@
       transform: rotate(0deg);
     }
 
+    .bottle-stage .bottle-shadow {
+      bottom: 24px;
+    }
+
     .bottle-stage-note {
       position: absolute;
-      bottom: 22px;
+      right: 0;
+      bottom: 12px;
+      left: 0;
       color: var(--text-soft);
-      font-size: 0.84rem;
+      font-size: 0.82rem;
+      text-align: center;
     }
 
-    .presence-question {
-      margin-top: 34px;
-      margin-bottom: 12px;
-      color: var(--blue-dark);
-      font-weight: 700;
-    }
-
-    .chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .chip {
-      min-height: 42px;
-      padding: 0 15px;
-      border: 1px solid #D4E0F7;
-      border-radius: 999px;
-      color: var(--text);
-      background: var(--white);
-      font-size: 0.9rem;
-      font-weight: 700;
-      transition:
-        border-color 180ms ease,
-        background 180ms ease,
-        color 180ms ease,
-        transform 180ms ease;
-    }
-
-    .chip:hover {
-      border-color: var(--blue);
-      color: var(--blue);
-      transform: translateY(-1px);
-    }
-
-    .chip.selected {
-      border-color: var(--blue);
-      color: var(--white);
-      background: var(--blue);
-    }
-
-    .label-hierarchy {
+    .front-back-demo {
       margin-top: 34px;
       display: grid;
-      gap: 12px;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
     }
 
-    .hierarchy-row {
-      display: grid;
-      grid-template-columns: 1.4fr 1fr;
-      align-items: center;
-      gap: 18px;
-      padding: 13px 0;
-      border-bottom: 1px solid rgba(11, 31, 68, 0.08);
+    .demo-side {
+      padding: 18px;
+      border: 1px solid rgba(21, 93, 252, 0.11);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.6);
     }
 
-    .hierarchy-row:last-child {
-      border-bottom: 0;
-    }
-
-    .hierarchy-row strong {
-      color: var(--blue-dark);
-    }
-
-    .hierarchy-bar {
-      height: 7px;
-      overflow: hidden;
-      border-radius: 999px;
-      background: rgba(21, 93, 252, 0.1);
-    }
-
-    .hierarchy-bar span {
-      height: 100%;
+    .demo-side strong {
       display: block;
-      border-radius: inherit;
-      background: var(--blue);
+      margin-bottom: 5px;
+      color: var(--blue-dark);
+      font-size: 0.87rem;
     }
 
-    .hierarchy-row.secondary .hierarchy-bar span {
-      width: 32%;
-      opacity: 0.45;
-    }
-
-    .hierarchy-row.primary .hierarchy-bar span {
-      width: 100%;
+    .demo-side span {
+      color: var(--text-soft);
+      font-size: 0.82rem;
+      line-height: 1.5;
     }
 
     .product-specification {
-      margin-top: 30px;
+      margin-top: 24px;
       color: var(--blue-dark);
       font-size: 0.92rem;
       font-weight: 700;
     }
 
-    /* ANUNCIANTES */
+    /* =========================
+       DÓNDE PUEDE ESTAR
+    ========================= */
 
-    .advertisers-grid {
+    .where-header {
+      max-width: 760px;
+      margin-bottom: 44px;
+    }
+
+    .where-grid {
       display: grid;
-      grid-template-columns: 43% 57%;
-      gap: 72px;
-      align-items: start;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
     }
 
-    .minimum-card {
-      max-width: 270px;
-      margin-top: 34px;
+    .where-card {
+      min-height: 270px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
       padding: 22px;
-      border: 1px solid rgba(21, 93, 252, 0.12);
-      border-radius: 18px;
-      background: var(--blue-light);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background:
+        linear-gradient(
+          180deg,
+          rgba(21, 93, 252, 0.04),
+          rgba(11, 31, 68, 0.08)
+        ),
+        var(--soft);
     }
 
-    .minimum-card span {
-      display: block;
-      margin-bottom: 6px;
-      color: var(--blue);
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+    .where-card::before {
+      content: "";
+      position: absolute;
+      top: 24%;
+      left: 50%;
+      width: 120px;
+      height: 120px;
+      transform: translateX(-50%);
+      border-radius: 50%;
+      background:
+        radial-gradient(
+          circle,
+          rgba(21, 93, 252, 0.16),
+          rgba(21, 93, 252, 0.02) 67%,
+          transparent 70%
+        );
     }
 
-    .minimum-card strong {
+    .where-card span {
+      position: relative;
+      z-index: 2;
       color: var(--blue-dark);
       font-family: "Space Grotesk", sans-serif;
-      font-size: 1.7rem;
-    }
-
-    .preference-panel {
-      padding: 32px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      background: var(--white);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .preference-panel h3 {
-      margin-bottom: 18px;
-      font-size: 1.45rem;
-    }
-
-    .availability-note {
-      margin: 16px 0 0;
-      color: var(--text-soft);
-      font-size: 0.85rem;
-      line-height: 1.55;
-    }
-
-    .creative-block {
-      margin-top: 34px;
-      padding-top: 28px;
-      border-top: 1px solid var(--border);
-    }
-
-    .creative-block h3 {
-      margin-bottom: 14px;
-    }
-
-    .creative-items {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 9px;
-    }
-
-    .creative-item {
-      padding: 9px 12px;
-      border-radius: 10px;
-      color: var(--blue-dark);
-      background: var(--soft);
-      font-size: 0.86rem;
+      font-size: 1.22rem;
       font-weight: 700;
     }
 
-    .advertiser-cta {
-      margin-top: 28px;
-    }
-
-    /* FORMS */
-
-    .form-section {
-      background: var(--soft);
-    }
-
-    .form-shell {
-      max-width: 920px;
-      margin: 0 auto;
-      padding: 42px;
-      border: 1px solid var(--border);
-      border-radius: 28px;
-      background: var(--white);
-      box-shadow: var(--shadow);
-    }
-
-    .form-heading {
-      max-width: 650px;
-      margin-bottom: 36px;
-    }
-
-    .form-heading h2 {
-      margin-bottom: 12px;
-      font-size: clamp(2rem, 4vw, 3rem);
-    }
-
-    .form-heading p {
-      margin-bottom: 0;
-      color: var(--text-soft);
-      line-height: 1.65;
-    }
-
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-    }
-
-    .form-field {
-      margin-bottom: 20px;
-    }
-
-    .form-field.full {
-      grid-column: 1 / -1;
-    }
-
-    .form-field label,
-    .form-legend {
-      display: block;
-      margin-bottom: 8px;
-      color: var(--blue-dark);
-      font-size: 0.88rem;
-      font-weight: 700;
-    }
-
-    .optional {
-      color: var(--muted);
-      font-weight: 500;
-    }
-
-    .form-field input,
-    .form-field textarea {
-      width: 100%;
-      min-height: 50px;
-      padding: 13px 14px;
-      border: 1px solid #D9E4F3;
-      border-radius: 13px;
-      outline: none;
-      color: var(--text);
-      background: var(--white);
-      transition:
-        border-color 180ms ease,
-        box-shadow 180ms ease;
-    }
-
-    .form-field textarea {
-      min-height: 125px;
-      resize: vertical;
-    }
-
-    .form-field input:focus,
-    .form-field textarea:focus {
-      border-color: var(--blue);
-      box-shadow: 0 0 0 4px rgba(21, 93, 252, 0.09);
-    }
-
-    .form-help {
-      margin: 8px 0 0;
-      color: var(--text-soft);
-      font-size: 0.8rem;
-      line-height: 1.5;
-    }
-
-    .form-group {
-      margin: 8px 0 28px;
-    }
-
-    .form-group .chips {
-      margin-top: 10px;
-    }
-
-    .form-note {
-      margin: 20px 0;
-      padding: 14px 16px;
-      border: 1px solid rgba(21, 93, 252, 0.12);
-      border-radius: 13px;
-      color: var(--blue-dark);
-      background: var(--blue-light);
-      font-size: 0.85rem;
-      line-height: 1.55;
-    }
-
-    .demo-notice {
-      margin-top: 14px;
-      color: var(--muted);
-      font-size: 0.78rem;
-      line-height: 1.5;
-    }
-
-    .form-message {
-      display: none;
+    .where-more {
       margin-top: 20px;
-      padding: 22px;
-      border: 1px solid rgba(21, 93, 252, 0.14);
-      border-radius: 16px;
-      background: var(--blue-light);
-    }
-
-    .form-message.visible {
-      display: block;
-    }
-
-    .form-message h3 {
-      margin-bottom: 8px;
-      font-size: 1.35rem;
-    }
-
-    .form-message p {
-      margin-bottom: 0;
       color: var(--text-soft);
-      line-height: 1.6;
+      font-size: 0.9rem;
+      line-height: 1.55;
     }
 
-    .field-error {
-      display: none;
-      margin-top: 7px;
-      color: var(--error);
-      font-size: 0.78rem;
-      font-weight: 600;
-    }
-
-    .field-error.visible {
-      display: block;
-    }
-
-    /* DISTRIBUIDORES */
-
-    .distributor-grid {
-      display: grid;
-      grid-template-columns: 46% 54%;
-      gap: 70px;
-      align-items: start;
-    }
-
-    .distributor-copy-block {
-      max-width: 520px;
-    }
-
-    .info-callout {
-      margin-top: 28px;
-      padding: 20px;
-      border-radius: 18px;
-      background: var(--blue-light);
-    }
-
-    .info-callout h3 {
-      margin-bottom: 8px;
-      font-size: 1.15rem;
-    }
-
-    .info-callout p {
-      margin-bottom: 0;
-      color: var(--text-soft);
-      line-height: 1.6;
-    }
-
-    .free-rule {
-      margin-top: 16px;
-      border: 1px solid rgba(21, 93, 252, 0.12);
-      background: var(--white);
-    }
-
-    .point-examples h3 {
-      margin-bottom: 18px;
-      font-size: 1.35rem;
-    }
-
-    .point-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
-
-    .point-card {
-      min-height: 96px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 14px;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      color: var(--blue-dark);
-      background: var(--white);
-      box-shadow: var(--shadow-soft);
-      font-size: 0.88rem;
-      font-weight: 700;
-      text-align: center;
-    }
-
-    .examples-note {
-      margin-top: 14px;
-      color: var(--text-soft);
-      font-size: 0.8rem;
-      line-height: 1.5;
-    }
-
-    .distributor-cta {
-      margin-top: 28px;
-    }
-
-    /* DISTRIBUTOR FORM */
-
-    .conditional-field {
-      display: none;
-    }
-
-    .conditional-field.visible {
-      display: block;
-    }
-
-    /* IMPACT */
+    /* =========================
+       VISIÓN
+    ========================= */
 
     .vision {
-      padding: 92px 0;
-      overflow: hidden;
+      padding: 100px 0;
       color: var(--white);
       background: var(--blue-dark);
+      overflow: hidden;
     }
 
     .vision-grid {
       display: grid;
-      grid-template-columns: 65% 35%;
+      grid-template-columns: 66% 34%;
       align-items: center;
-      gap: 40px;
+      gap: 38px;
     }
 
     .vision .section-label {
@@ -1069,11 +773,12 @@
       max-width: 720px;
       margin-bottom: 18px;
       color: var(--white);
-      font-size: clamp(2.5rem, 4.8vw, 4rem);
+      font-size: clamp(2.6rem, 4.8vw, 4rem);
+      line-height: 1.02;
     }
 
     .vision-text {
-      max-width: 720px;
+      max-width: 730px;
       margin-bottom: 14px;
       color: rgba(255, 255, 255, 0.84);
       font-size: 1.05rem;
@@ -1081,18 +786,17 @@
     }
 
     .vision-microcopy {
-      max-width: 720px;
-      margin-bottom: 0;
+      max-width: 730px;
+      margin: 0;
       color: rgba(255, 255, 255, 0.56);
-      font-size: 0.82rem;
+      font-size: 0.81rem;
       line-height: 1.6;
     }
 
     .water-abstract {
-      position: relative;
       width: 230px;
       height: 230px;
-      margin: auto;
+      margin: 0 auto;
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 50%;
       background:
@@ -1102,6 +806,7 @@
           rgba(21, 93, 252, 0.08) 42%,
           transparent 68%
         );
+      position: relative;
     }
 
     .water-abstract::before,
@@ -1120,26 +825,67 @@
       inset: 58px;
     }
 
-    /* FAQ */
+    /* =========================
+       DOS CAMINOS
+    ========================= */
+
+    .paths-header {
+      margin-bottom: 38px;
+      text-align: center;
+    }
+
+    .paths-header .section-title {
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    .paths-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .path-card {
+      min-height: 280px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 34px;
+      border: 1px solid rgba(21, 93, 252, 0.1);
+      border-radius: 24px;
+      background: var(--white);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .path-card h3 {
+      margin-bottom: 12px;
+      font-size: 1.72rem;
+    }
+
+    .path-card p {
+      max-width: 440px;
+      margin-bottom: 28px;
+      color: var(--text-soft);
+      line-height: 1.62;
+    }
+
+    .path-card .button {
+      margin-top: auto;
+    }
+
+    /* =========================
+       FAQ
+    ========================= */
 
     .faq-grid {
       display: grid;
-      grid-template-columns: 35% 65%;
-      gap: 72px;
+      grid-template-columns: 36% 64%;
+      gap: 70px;
       align-items: start;
     }
 
-    .faq-group + .faq-group {
-      margin-top: 34px;
-    }
-
-    .faq-category {
-      margin-bottom: 12px;
-      color: var(--blue);
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 0.09em;
-      text-transform: uppercase;
+    .faq-list {
+      border-top: 1px solid var(--border);
     }
 
     .faq-item {
@@ -1163,7 +909,7 @@
     .faq-icon {
       flex: 0 0 auto;
       color: var(--blue);
-      font-size: 1.3rem;
+      font-size: 1.35rem;
       font-weight: 400;
       transition: transform 180ms ease;
     }
@@ -1180,61 +926,14 @@
 
     .faq-answer p {
       margin: 0;
-      padding: 0 36px 20px 0;
+      padding: 0 38px 20px 0;
       color: var(--text-soft);
       line-height: 1.65;
     }
 
-    /* CTA FINAL */
-
-    .final-cta {
-      background: var(--blue-light);
-    }
-
-    .final-cta-header {
-      margin-bottom: 38px;
-      text-align: center;
-    }
-
-    .final-cta-header h2 {
-      margin-bottom: 0;
-      font-size: clamp(2.4rem, 4.5vw, 3.7rem);
-    }
-
-    .cta-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-
-    .cta-card {
-      min-height: 280px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 34px;
-      border: 1px solid rgba(21, 93, 252, 0.1);
-      border-radius: 24px;
-      background: var(--white);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .cta-card h3 {
-      margin-bottom: 12px;
-      font-size: 1.7rem;
-    }
-
-    .cta-card p {
-      margin-bottom: 26px;
-      color: var(--text-soft);
-      line-height: 1.6;
-    }
-
-    .cta-card .button {
-      margin-top: auto;
-    }
-
-    /* FOOTER */
+    /* =========================
+       FOOTER
+    ========================= */
 
     .footer {
       padding: 58px 0 24px;
@@ -1258,13 +957,16 @@
     }
 
     .footer-slogan {
-      margin-top: 14px;
+      margin: 14px 0 0;
       color: rgba(255, 255, 255, 0.7);
     }
 
-    .footer-nav {
+    .footer-nav-grid {
       justify-self: end;
-      min-width: 220px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 38px;
+      min-width: 360px;
     }
 
     .footer-nav h3 {
@@ -1297,7 +999,9 @@
       font-size: 0.8rem;
     }
 
-    /* REVEAL */
+    /* =========================
+       REVEAL
+    ========================= */
 
     .reveal {
       opacity: 0;
@@ -1312,15 +1016,25 @@
       transform: translateY(0);
     }
 
-    /* TABLET */
+    /* =========================
+       TABLET
+    ========================= */
 
-    @media (max-width: 1024px) {
+    @media (max-width: 1050px) {
       .nav-links {
         gap: 18px;
       }
 
+      .nav-page-links {
+        gap: 8px;
+      }
+
       .hero-inner {
         grid-template-columns: 48% 52%;
+      }
+
+      .hero-content {
+        padding-left: 16px;
       }
 
       .hero h1 {
@@ -1331,23 +1045,20 @@
         min-height: 590px;
       }
 
-      .hero-callout {
-        right: -4px;
+      .where-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
 
       .bottle-section-grid,
-      .advertisers-grid,
-      .distributor-grid,
+      .vision-grid,
       .faq-grid {
         gap: 42px;
       }
-
-      .point-grid {
-        grid-template-columns: 1fr 1fr;
-      }
     }
 
-    /* MOBILE */
+    /* =========================
+       MOBILE
+    ========================= */
 
     @media (max-width: 780px) {
       .container {
@@ -1363,7 +1074,7 @@
       }
 
       .nav-links,
-      .nav-cta {
+      .nav-page-links {
         display: none;
       }
 
@@ -1373,10 +1084,10 @@
 
       .mobile-menu {
         position: fixed;
-        z-index: 999;
         top: 68px;
         right: 0;
         left: 0;
+        z-index: 999;
         display: block;
         max-height: 0;
         overflow: hidden;
@@ -1386,7 +1097,7 @@
       }
 
       .mobile-menu.open {
-        max-height: 480px;
+        max-height: 520px;
       }
 
       .mobile-menu-inner {
@@ -1395,7 +1106,7 @@
         padding: 16px 0 22px;
       }
 
-      .mobile-menu a:not(.button) {
+      .mobile-menu a {
         padding: 12px 4px;
         color: var(--blue-dark);
         font-weight: 600;
@@ -1413,12 +1124,12 @@
       .hero-inner {
         display: flex;
         flex-direction: column;
-        align-items: stretch;
         gap: 6px;
-        padding: 48px 0 68px;
+        padding: 50px 0 68px;
       }
 
       .hero-content {
+        padding-left: 0;
         transform: none;
       }
 
@@ -1430,18 +1141,11 @@
 
       .hero-description {
         max-width: 100%;
-        margin-bottom: 18px;
+        margin-bottom: 22px;
         font-size: 1.03rem;
       }
 
-      .hero-product {
-        order: 2;
-        min-height: 510px;
-        margin: 10px 0;
-      }
-
       .hero-actions {
-        order: 3;
         flex-direction: column;
       }
 
@@ -1449,15 +1153,9 @@
         width: 100%;
       }
 
-      .hero-location {
-        order: 4;
-        margin-top: 18px;
-      }
-
-      .hero-callout {
-        right: 0;
-        top: 20%;
-        font-size: 0.78rem;
+      .hero-product {
+        min-height: 500px;
+        margin-top: 4px;
       }
 
       .product-glow {
@@ -1475,8 +1173,14 @@
         min-height: 290px;
       }
 
-      .placeholder-slot {
+      .front-slot {
         min-height: 62px;
+      }
+
+      .hero-callout {
+        right: 0;
+        top: 18%;
+        font-size: 0.78rem;
       }
 
       .next-section-hint {
@@ -1490,7 +1194,6 @@
       .process {
         grid-template-columns: 1fr;
         gap: 0;
-        padding-left: 0;
       }
 
       .process::before {
@@ -1520,83 +1223,47 @@
       }
 
       .bottle-section-grid,
-      .advertisers-grid,
-      .distributor-grid,
-      .faq-grid,
       .vision-grid,
-      .cta-grid,
+      .paths-grid,
+      .faq-grid,
       .footer-main {
         grid-template-columns: 1fr;
       }
 
-      .bottle-section-grid {
-        gap: 28px;
-      }
-
       .bottle-stage {
-        min-height: 560px;
-        order: 2;
+        min-height: 550px;
       }
 
-      .bottle-section-content {
-        order: 1;
-      }
-
-      .hierarchy-row {
-        grid-template-columns: 1fr;
-        gap: 8px;
-      }
-
-      .advertisers-grid,
-      .distributor-grid {
-        gap: 46px;
-      }
-
-      .preference-panel {
-        padding: 24px;
-      }
-
-      .form-shell {
-        padding: 26px 20px;
-        border-radius: 22px;
-      }
-
-      .form-grid {
+      .front-back-demo {
         grid-template-columns: 1fr;
       }
 
-      .point-grid {
+      .where-grid {
         grid-template-columns: 1fr 1fr;
       }
 
       .vision {
-        padding: 72px 0;
-      }
-
-      .vision-grid {
-        gap: 34px;
+        padding: 76px 0;
       }
 
       .water-abstract {
-        width: 160px;
-        height: 160px;
+        width: 170px;
+        height: 170px;
       }
 
-      .faq-grid {
-        gap: 36px;
+      .paths-grid {
+        gap: 14px;
       }
 
-      .cta-card {
+      .path-card {
         min-height: 240px;
         padding: 26px;
       }
 
-      .footer-main {
-        gap: 34px;
-      }
-
-      .footer-nav {
+      .footer-nav-grid {
         justify-self: start;
+        min-width: 0;
+        width: 100%;
       }
 
       .footer-bottom {
@@ -1604,17 +1271,18 @@
       }
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: 500px) {
       .hero h1 {
         font-size: 3.45rem;
       }
 
-      .point-grid {
+      .where-grid,
+      .footer-nav-grid {
         grid-template-columns: 1fr;
       }
 
-      .chip {
-        font-size: 0.82rem;
+      .hero-callout {
+        right: 2px;
       }
     }
 
@@ -1628,7 +1296,6 @@
       *::after {
         transition-duration: 0.01ms !important;
         animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
       }
 
       .reveal {
@@ -1646,23 +1313,25 @@
   <header class="navbar">
     <div class="container navbar-inner">
 
-      <a href="#inicio" class="brand" aria-label="Agua Gratis">
+      <a class="brand" href="index.html" aria-label="Agua Gratis">
         <span>AGUA</span>
         <span>GRATIS</span>
       </a>
 
       <nav class="nav-links" aria-label="Navegación principal">
         <a href="#como-funciona">Cómo funciona</a>
-        <a href="#anunciantes">Anunciantes</a>
-        <a href="#distribuidores">Distribuidores</a>
-        <a href="#faq">Preguntas</a>
+        <a href="#botella">La botella</a>
+        <a href="#donde-puede-estar">Dónde puede estar</a>
+        <a href="#nuestra-vision">Nuestra visión</a>
       </nav>
 
-      <a href="#cotizacion" class="button button-primary nav-cta">
-        Solicitar cotización
-      </a>
+      <div class="nav-page-links">
+        <a href="anunciantes.html">Anunciantes</a>
+        <a href="distribuidores.html" class="secondary">Distribuidores</a>
+      </div>
 
       <button
+        type="button"
         class="menu-button"
         id="menuButton"
         aria-label="Abrir menú"
@@ -1677,15 +1346,15 @@
 
     <div class="mobile-menu" id="mobileMenu">
       <div class="container mobile-menu-inner">
+
         <a href="#como-funciona">Cómo funciona</a>
         <a href="#botella">La botella</a>
-        <a href="#anunciantes">Anunciantes</a>
-        <a href="#distribuidores">Distribuidores</a>
-        <a href="#faq">Preguntas frecuentes</a>
+        <a href="#donde-puede-estar">Dónde puede estar</a>
+        <a href="#nuestra-vision">Nuestra visión</a>
 
-        <a href="#cotizacion" class="button button-primary">
-          Solicitar cotización
-        </a>
+        <a href="anunciantes.html">Anunciantes</a>
+        <a href="distribuidores.html">Distribuidores</a>
+
       </div>
     </div>
   </header>
@@ -1695,9 +1364,10 @@
     <!-- HERO -->
 
     <section class="hero" id="inicio">
+
       <div class="container hero-inner">
 
-        <div class="hero-content">
+        <div class="hero-content reveal">
 
           <div class="hero-eyebrow">
             AGUA GRATIS
@@ -1714,11 +1384,17 @@
 
           <div class="hero-actions">
 
-            <a href="#cotizacion" class="button button-primary">
-              Solicitar cotización
+            <a
+              href="anunciantes.html"
+              class="button button-primary"
+            >
+              Conocer publicidad
             </a>
 
-            <a href="#distribuidores" class="button button-secondary">
+            <a
+              href="distribuidores.html"
+              class="button button-secondary"
+            >
               Quiero distribuir
             </a>
 
@@ -1744,16 +1420,19 @@
 
         </div>
 
-        <div class="hero-product">
+        <div class="hero-product reveal">
 
           <div class="product-glow"></div>
 
           <div class="bottle-shadow"></div>
 
           <!-- PLACEHOLDER TEMPORAL.
-               Este bloque será reemplazado por Bottle3D. -->
+               Se reemplazará posteriormente por Bottle3D. -->
 
-          <div class="bottle-placeholder" aria-label="Placeholder de botella Agua Gratis">
+          <div
+            class="bottle-placeholder"
+            aria-label="Placeholder temporal de botella Agua Gratis"
+          >
 
             <div class="bottle-cap"></div>
             <div class="bottle-neck"></div>
@@ -1766,14 +1445,24 @@
               </div>
 
               <div class="bottle-small">
-                Placeholder de etiqueta
+                Placeholder temporal
               </div>
 
-              <div class="placeholder-slots">
-                <div class="placeholder-slot">ESPACIO 01</div>
-                <div class="placeholder-slot">ESPACIO 02</div>
-                <div class="placeholder-slot">ESPACIO 03</div>
-                <div class="placeholder-slot">ESPACIO 04</div>
+              <div class="placeholder-front">
+
+                <div class="front-slot">
+                  FRENTE · 01
+                </div>
+
+                <div class="front-slot">
+                  FRENTE · 02
+                </div>
+
+              </div>
+
+              <div class="placeholder-back-note">
+                2 espacios adicionales estarán en la parte trasera
+                de la botella final.
               </div>
 
               <div class="bottle-spec">
@@ -1795,11 +1484,16 @@
       <div class="next-section-hint">
         Descubre cómo funciona
       </div>
+
     </section>
 
     <!-- CÓMO FUNCIONA -->
 
-    <section class="section section-soft" id="como-funciona">
+    <section
+      class="section section-soft"
+      id="como-funciona"
+    >
+
       <div class="container">
 
         <div class="process-header reveal">
@@ -1823,11 +1517,11 @@
             </div>
 
             <h3>
-              Configura tu campaña
+              Las marcas anuncian
             </h3>
 
             <p>
-              Elige tus espacios e indica tus preferencias de distribución.
+              Reservan espacios publicitarios en las botellas.
             </p>
 
           </article>
@@ -1839,11 +1533,11 @@
             </div>
 
             <h3>
-              Confirmamos disponibilidad
+              Agua Gratis coordina
             </h3>
 
             <p>
-              Revisamos las opciones y coordinamos la campaña.
+              Coordinamos la campaña y la distribución.
             </p>
 
           </article>
@@ -1855,11 +1549,12 @@
             </div>
 
             <h3>
-              Las botellas salen a distribución
+              El agua llega gratis
             </h3>
 
             <p>
-              Llegan a puntos y contextos aprobados para entregarse gratis.
+              Las botellas llegan a puntos y contextos aprobados
+              para entregarse gratuitamente.
             </p>
 
           </article>
@@ -1867,11 +1562,16 @@
         </div>
 
       </div>
+
     </section>
 
     <!-- LA BOTELLA -->
 
-    <section class="section bottle-section" id="botella">
+    <section
+      class="section bottle-section"
+      id="botella"
+    >
+
       <div class="container bottle-section-grid">
 
         <div class="bottle-stage reveal">
@@ -1880,7 +1580,7 @@
           <div class="bottle-shadow"></div>
 
           <!-- PLACEHOLDER TEMPORAL.
-               NO representa el diseño físico definitivo. -->
+               NO representa la botella física definitiva. -->
 
           <div class="bottle-placeholder">
 
@@ -1895,18 +1595,23 @@
               </div>
 
               <div class="bottle-small">
-                Placeholder de etiqueta
+                Placeholder temporal
               </div>
 
-              <div class="placeholder-slots">
-                <div class="placeholder-slot">ESPACIO</div>
-                <div class="placeholder-slot">ESPACIO</div>
-                <div class="placeholder-slot">ESPACIO</div>
-                <div class="placeholder-slot">ESPACIO</div>
+              <div class="placeholder-front">
+
+                <div class="front-slot">
+                  FRENTE · 01
+                </div>
+
+                <div class="front-slot">
+                  FRENTE · 02
+                </div>
+
               </div>
 
-              <div class="bottle-spec">
-                PLACEHOLDER
+              <div class="placeholder-back-note">
+                Parte trasera: 2 espacios adicionales.
               </div>
 
             </div>
@@ -1914,12 +1619,12 @@
           </div>
 
           <div class="bottle-stage-note">
-            Bottle3D interactiva se incorporará en una futura iteración.
+            La botella 3D se incorporará posteriormente.
           </div>
 
         </div>
 
-        <div class="bottle-section-content reveal">
+        <div class="reveal">
 
           <span class="section-label">
             La botella
@@ -1930,70 +1635,27 @@
           </h2>
 
           <p class="section-copy">
-            Reserva 1, 2, 3 o los 4 espacios publicitarios, según disponibilidad
-            y las necesidades de tu campaña.
+            4 espacios publicitarios: 2 en el frente y 2 en la parte trasera.
           </p>
 
-          <div class="presence-question">
-            ¿Cuánta presencia necesita tu campaña?
-          </div>
+          <div class="front-back-demo">
 
-          <div class="chips single-select" data-selection="presence">
-
-            <button class="chip selected" type="button">
-              1 espacio
-            </button>
-
-            <button class="chip" type="button">
-              2 espacios
-            </button>
-
-            <button class="chip" type="button">
-              3 espacios
-            </button>
-
-            <button class="chip" type="button">
-              4 espacios
-            </button>
-
-          </div>
-
-          <div class="label-hierarchy">
-
-            <div class="hierarchy-row primary">
-
+            <div class="demo-side">
               <strong>
-                4 espacios publicitarios
+                Frente
               </strong>
-
-              <div class="hierarchy-bar">
-                <span></span>
-              </div>
-
+              <span>
+                2 espacios publicitarios.
+              </span>
             </div>
 
-            <div class="hierarchy-row secondary">
-
+            <div class="demo-side">
               <strong>
-                Agua Gratis
+                Parte trasera
               </strong>
-
-              <div class="hierarchy-bar">
-                <span></span>
-              </div>
-
-            </div>
-
-            <div class="hierarchy-row secondary">
-
-              <strong>
-                Información sanitaria
-              </strong>
-
-              <div class="hierarchy-bar">
-                <span></span>
-              </div>
-
+              <span>
+                2 espacios publicitarios.
+              </span>
             </div>
 
           </div>
@@ -2005,756 +1667,71 @@
         </div>
 
       </div>
+
     </section>
 
-    <!-- PARA ANUNCIANTES -->
-
-    <section class="section" id="anunciantes">
-      <div class="container advertisers-grid">
-
-        <div class="reveal">
-
-          <span class="section-label">
-            Para anunciantes
-          </span>
-
-          <h2 class="section-title">
-            Una nueva forma de poner tu marca en circulación.
-          </h2>
-
-          <p class="section-copy">
-            Cuéntanos qué quieres lograr y dónde te interesa tener presencia.
-            Nosotros revisamos las opciones disponibles para tu campaña.
-          </p>
-
-          <div class="minimum-card">
-
-            <span>
-              Campaña mínima
-            </span>
-
-            <strong>
-              1,000 botellas
-            </strong>
-
-          </div>
-
-          <div class="advertiser-cta">
-
-            <a href="#cotizacion" class="button button-primary">
-              Solicitar cotización
-            </a>
-
-          </div>
-
-        </div>
-
-        <div class="preference-panel reveal">
-
-          <h3>
-            ¿Dónde te interesa tener presencia?
-          </h3>
-
-          <div class="chips multi-select">
-
-            <button type="button" class="chip">Eventos</button>
-            <button type="button" class="chip">Universidades</button>
-            <button type="button" class="chip">Gimnasios</button>
-            <button type="button" class="chip">Restaurantes</button>
-            <button type="button" class="chip">Carreras</button>
-            <button type="button" class="chip">Conciertos</button>
-            <button type="button" class="chip">Centros comerciales</button>
-            <button type="button" class="chip">Oficinas</button>
-            <button type="button" class="chip">Pasos y Pedales</button>
-            <button type="button" class="chip">Otros</button>
-
-          </div>
-
-          <p class="availability-note">
-            Las preferencias están sujetas a disponibilidad y confirmación.
-          </p>
-
-          <div class="creative-block">
-
-            <h3>
-              Haz más con tu espacio.
-            </h3>
-
-            <div class="creative-items">
-              <span class="creative-item">Marca</span>
-              <span class="creative-item">Promociones</span>
-              <span class="creative-item">Redes sociales</span>
-              <span class="creative-item">QR</span>
-            </div>
-
-            <p class="availability-note">
-              Sujeto al diseño final y requisitos aplicables.
-            </p>
-
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- FORMULARIO ANUNCIANTES -->
-
-    <section class="section form-section" id="cotizacion">
-      <div class="container">
-
-        <div class="form-shell reveal">
-
-          <div class="form-heading">
-
-            <span class="section-label">
-              Solicitud de cotización
-            </span>
-
-            <h2>
-              Cuéntanos sobre tu campaña.
-            </h2>
-
-            <p>
-              Comparte la información inicial para que podamos entender
-              qué estás considerando.
-            </p>
-
-          </div>
-
-          <form id="advertiserForm" novalidate>
-
-            <div class="form-grid">
-
-              <div class="form-field">
-
-                <label for="adv-name">
-                  Nombre *
-                </label>
-
-                <input
-                  id="adv-name"
-                  name="name"
-                  type="text"
-                  placeholder="Tu nombre"
-                >
-
-                <div class="field-error">
-                  Completa este campo.
-                </div>
-
-              </div>
-
-              <div class="form-field">
-
-                <label for="adv-company">
-                  Empresa *
-                </label>
-
-                <input
-                  id="adv-company"
-                  name="company"
-                  type="text"
-                  placeholder="Nombre de la empresa"
-                >
-
-                <div class="field-error">
-                  Completa este campo.
-                </div>
-
-              </div>
-
-              <div class="form-field">
-
-                <label for="adv-email">
-                  Correo electrónico *
-                </label>
-
-                <input
-                  id="adv-email"
-                  name="email"
-                  type="email"
-                  placeholder="correo@empresa.com"
-                >
-
-                <div class="field-error">
-                  Ingresa un correo electrónico válido.
-                </div>
-
-              </div>
-
-              <div class="form-field">
-
-                <label for="adv-phone">
-                  Teléfono / WhatsApp
-                  <span class="optional">— opcional</span>
-                </label>
-
-                <input
-                  id="adv-phone"
-                  name="phone"
-                  type="tel"
-                  placeholder="Número de contacto"
-                >
-
-              </div>
-
-            </div>
-
-            <div class="form-group">
-
-              <div class="form-legend">
-                Cantidad aproximada de botellas *
-              </div>
-
-              <input
-                id="adv-quantity"
-                type="text"
-                placeholder="Indica la cantidad que estás considerando"
-                style="
-                  width:100%;
-                  min-height:50px;
-                  padding:13px 14px;
-                  border:1px solid #D9E4F3;
-                  border-radius:13px;
-                  outline:none;
-                "
-              >
-
-              <p class="form-help">
-                Campaña mínima: 1,000 botellas.
-              </p>
-
-              <div
-                class="field-error"
-                id="quantityError"
-              >
-                Indica una cantidad aproximada.
-              </div>
-
-            </div>
-
-            <div class="form-group">
-
-              <div class="form-legend">
-                ¿Cuántos espacios te interesan? *
-              </div>
-
-              <div
-                class="chips single-select required-chip-group"
-                id="advertiserSpaces"
-              >
-
-                <button type="button" class="chip">1</button>
-                <button type="button" class="chip">2</button>
-                <button type="button" class="chip">3</button>
-                <button type="button" class="chip">4</button>
-                <button type="button" class="chip">No estoy seguro</button>
-
-              </div>
-
-              <p class="form-help">
-                Sujeto a disponibilidad.
-              </p>
-
-              <div
-                class="field-error"
-                id="spacesError"
-              >
-                Selecciona una opción.
-              </div>
-
-            </div>
-
-            <div class="form-group">
-
-              <div class="form-legend">
-                Preferencias de distribución
-                <span class="optional">— opcional</span>
-              </div>
-
-              <div class="chips multi-select">
-
-                <button type="button" class="chip">Eventos</button>
-                <button type="button" class="chip">Universidades</button>
-                <button type="button" class="chip">Gimnasios</button>
-                <button type="button" class="chip">Restaurantes</button>
-                <button type="button" class="chip">Carreras</button>
-                <button type="button" class="chip">Conciertos</button>
-                <button type="button" class="chip">Centros comerciales</button>
-                <button type="button" class="chip">Oficinas</button>
-                <button type="button" class="chip">Pasos y Pedales</button>
-                <button type="button" class="chip">Otros</button>
-
-              </div>
-
-              <p class="form-help">
-                Estas son preferencias iniciales. Confirmaremos las opciones
-                disponibles antes de definir la campaña.
-              </p>
-
-            </div>
-
-            <div class="form-grid">
-
-              <div class="form-field">
-
-                <label for="adv-zone">
-                  Zona o área de interés
-                  <span class="optional">— opcional</span>
-                </label>
-
-                <input
-                  id="adv-zone"
-                  type="text"
-                  placeholder="Zona, municipio o área"
-                >
-
-              </div>
-
-              <div class="form-field">
-
-                <label for="adv-date">
-                  Fecha o período aproximado
-                  <span class="optional">— opcional</span>
-                </label>
-
-                <input
-                  id="adv-date"
-                  type="text"
-                  placeholder="Cuándo te gustaría realizarla"
-                >
-
-              </div>
-
-            </div>
-
-            <div class="form-field">
-
-              <label for="adv-campaign">
-                Cuéntanos sobre tu campaña
-                <span class="optional">— opcional</span>
-              </label>
-
-              <textarea
-                id="adv-campaign"
-                placeholder="¿Qué quieres lograr? Puedes incluir público, idea, evento o cualquier detalle importante."
-              ></textarea>
-
-            </div>
-
-            <div class="form-note">
-              En esta versión del website el formulario todavía no está
-              conectado a un sistema de envío.
-            </div>
-
-            <button
-              type="submit"
-              class="button button-primary"
-            >
-              Solicitar cotización
-            </button>
-
-            <p class="demo-notice">
-              Podrás completar y probar visualmente el formulario, pero
-              ningún dato será enviado hasta que conectemos el backend.
-            </p>
-
-            <div
-              class="form-message"
-              id="advertiserMessage"
-              aria-live="polite"
-            >
-
-              <h3>
-                Formulario listo para conectar.
-              </h3>
-
-              <p>
-                La información no fue enviada porque esta versión todavía
-                no tiene backend. Cuando conectemos el sistema, el mensaje
-                final será: “Solicitud recibida. Gracias por considerar
-                Agua Gratis para tu campaña. Revisaremos la información y
-                las opciones disponibles antes de continuar con la cotización.”
-              </p>
-
-            </div>
-
-          </form>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- PARA DISTRIBUIDORES -->
-
-    <section class="section" id="distribuidores">
-      <div class="container distributor-grid">
-
-        <div class="distributor-copy-block reveal">
-
-          <span class="section-label">
-            Para distribuidores
-          </span>
-
-          <h2 class="section-title">
-            Convierte tu espacio en un Punto Agua Gratis.
-          </h2>
-
-          <p class="section-copy">
-            Si tienes un negocio, establecimiento o evento, puedes solicitar
-            participar y ofrecer Agua Gratis a tus clientes, visitantes o asistentes.
-          </p>
-
-          <div class="info-callout">
-
-            <h3>
-              Sin costo para el punto aprobado
-            </h3>
-
-            <p>
-              Los puntos aprobados podrán recibir botellas sin costo para
-              entregarlas gratuitamente, bajo las condiciones definidas
-              para cada distribución.
-            </p>
-
-          </div>
-
-          <div class="info-callout free-rule">
-
-            <h3>
-              Gratis significa gratis.
-            </h3>
-
-            <p>
-              Las botellas recibidas como Punto Agua Gratis están destinadas
-              a entregarse gratuitamente. No son para reventa.
-            </p>
-
-          </div>
-
-          <div class="distributor-cta">
-
-            <a
-              href="#solicitud-distribuidor"
-              class="button button-primary"
-            >
-              Solicitar ser distribuidor
-            </a>
-
-          </div>
-
-        </div>
-
-        <div class="point-examples reveal">
-
-          <h3>
-            ¿Dónde podría existir un Punto Agua Gratis?
-          </h3>
-
-          <div class="point-grid">
-
-            <div class="point-card">Universidades</div>
-            <div class="point-card">Gimnasios</div>
-            <div class="point-card">Restaurantes</div>
-            <div class="point-card">Oficinas</div>
-            <div class="point-card">Eventos</div>
-            <div class="point-card">Carreras</div>
-            <div class="point-card">Conciertos</div>
-            <div class="point-card">Centros comerciales</div>
-            <div class="point-card">Otros espacios</div>
-
-          </div>
-
-          <p class="examples-note">
-            Estos son ejemplos de lugares que pueden solicitar participar.
-            No representan una red de puntos ya existente.
-          </p>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- FORMULARIO DISTRIBUIDORES -->
+    <!-- DÓNDE PUEDE ESTAR -->
 
     <section
-      class="section form-section"
-      id="solicitud-distribuidor"
+      class="section"
+      id="donde-puede-estar"
     >
+
       <div class="container">
 
-        <div class="form-shell reveal">
-
-          <div class="form-heading">
-
-            <span class="section-label">
-              Punto Agua Gratis
-            </span>
-
-            <h2>
-              Solicita ser distribuidor.
-            </h2>
-
-            <p>
-              Cuéntanos lo esencial sobre tu espacio para que podamos
-              evaluar una posible oportunidad de distribución.
-            </p>
-
-          </div>
-
-          <form id="distributorForm" novalidate>
-
-            <div class="form-grid">
-
-              <div class="form-field">
-
-                <label for="dist-name">
-                  Nombre *
-                </label>
-
-                <input
-                  id="dist-name"
-                  type="text"
-                  placeholder="Tu nombre"
-                >
-
-                <div class="field-error">
-                  Completa este campo.
-                </div>
-
-              </div>
-
-              <div class="form-field">
-
-                <label for="dist-place">
-                  Nombre del lugar, organización o evento *
-                </label>
-
-                <input
-                  id="dist-place"
-                  type="text"
-                  placeholder="Nombre del espacio"
-                >
-
-                <div class="field-error">
-                  Completa este campo.
-                </div>
-
-              </div>
-
-              <div class="form-field">
-
-                <label for="dist-email">
-                  Correo electrónico *
-                </label>
-
-                <input
-                  id="dist-email"
-                  type="email"
-                  placeholder="correo@ejemplo.com"
-                >
-
-                <div class="field-error">
-                  Ingresa un correo electrónico válido.
-                </div>
-
-              </div>
-
-              <div class="form-field">
-
-                <label for="dist-phone">
-                  Teléfono / WhatsApp
-                  <span class="optional">— opcional</span>
-                </label>
-
-                <input
-                  id="dist-phone"
-                  type="tel"
-                  placeholder="Número de contacto"
-                >
-
-              </div>
-
-            </div>
-
-            <div class="form-group">
-
-              <div class="form-legend">
-                Tipo de espacio *
-              </div>
-
-              <div
-                class="chips single-select required-chip-group"
-                id="pointTypes"
-              >
-
-                <button type="button" class="chip" data-event="false">
-                  Universidad
-                </button>
-
-                <button type="button" class="chip" data-event="false">
-                  Gimnasio
-                </button>
-
-                <button type="button" class="chip" data-event="false">
-                  Restaurante
-                </button>
-
-                <button type="button" class="chip" data-event="false">
-                  Oficina
-                </button>
-
-                <button type="button" class="chip" data-event="true">
-                  Evento
-                </button>
-
-                <button type="button" class="chip" data-event="true">
-                  Carrera
-                </button>
-
-                <button type="button" class="chip" data-event="true">
-                  Concierto
-                </button>
-
-                <button type="button" class="chip" data-event="false">
-                  Centro comercial
-                </button>
-
-                <button type="button" class="chip" data-event="false">
-                  Otro
-                </button>
-
-              </div>
-
-              <div
-                class="field-error"
-                id="pointTypeError"
-              >
-                Selecciona un tipo de espacio.
-              </div>
-
-            </div>
-
-            <div class="form-grid">
-
-              <div class="form-field">
-
-                <label for="dist-location">
-                  Ubicación general *
-                </label>
-
-                <input
-                  id="dist-location"
-                  type="text"
-                  placeholder="Zona, municipio o área"
-                >
-
-                <div class="field-error">
-                  Completa este campo.
-                </div>
-
-              </div>
-
-              <div class="form-field">
-
-                <label for="dist-people">
-                  Cantidad aproximada de personas
-                  <span class="optional">— opcional</span>
-                </label>
-
-                <input
-                  id="dist-people"
-                  type="text"
-                  placeholder="Ej. personas al día o asistentes"
-                >
-
-              </div>
-
-            </div>
-
-            <div
-              class="form-field conditional-field"
-              id="eventDateField"
-            >
-
-              <label for="dist-event-date">
-                Fecha aproximada del evento
-                <span class="optional">— opcional</span>
-              </label>
-
-              <input
-                id="dist-event-date"
-                type="text"
-                placeholder="Fecha o período aproximado"
-              >
-
-            </div>
-
-            <div class="form-field">
-
-              <label for="dist-about">
-                Cuéntanos sobre tu espacio
-                <span class="optional">— opcional</span>
-              </label>
-
-              <textarea
-                id="dist-about"
-                placeholder="Cuéntanos brevemente sobre el lugar, evento o cómo te gustaría ofrecer Agua Gratis."
-              ></textarea>
-
-            </div>
-
-            <div class="form-note">
-              Enviar esta solicitud no significa aprobación automática
-              como Punto Agua Gratis.
-            </div>
-
-            <button
-              type="submit"
-              class="button button-primary"
-            >
-              Solicitar ser distribuidor
-            </button>
-
-            <p class="demo-notice">
-              Esta versión todavía no envía información. El backend se
-              conectará posteriormente.
-            </p>
-
-            <div
-              class="form-message"
-              id="distributorMessage"
-              aria-live="polite"
-            >
-
-              <h3>
-                Formulario listo para conectar.
-              </h3>
-
-              <p>
-                La información no fue enviada porque esta versión todavía
-                no tiene backend. Cuando conectemos el sistema, el mensaje
-                final será: “Solicitud recibida. Gracias por tu interés en
-                convertir tu espacio en un Punto Agua Gratis. Revisaremos
-                la información para evaluar posibles oportunidades de
-                distribución. Enviar una solicitud no garantiza aprobación
-                como Punto Agua Gratis.”
-              </p>
-
-            </div>
-
-          </form>
+        <div class="where-header reveal">
+
+          <span class="section-label">
+            Dónde puede estar
+          </span>
+
+          <h2 class="section-title">
+            Agua Gratis, donde está la gente.
+          </h2>
+
+          <p class="section-copy">
+            Exploramos distintos contextos de distribución según cada
+            campaña y disponibilidad.
+          </p>
 
         </div>
 
+        <div class="where-grid">
+
+          <article class="where-card reveal">
+            <span>Universidades</span>
+          </article>
+
+          <article class="where-card reveal">
+            <span>Eventos</span>
+          </article>
+
+          <article class="where-card reveal">
+            <span>Gimnasios</span>
+          </article>
+
+          <article class="where-card reveal">
+            <span>Restaurantes</span>
+          </article>
+
+        </div>
+
+        <p class="where-more reveal">
+          También puede incluir carreras, conciertos, centros comerciales,
+          oficinas, Pasos y Pedales y otros contextos.
+        </p>
+
       </div>
+
     </section>
 
     <!-- NUESTRA VISIÓN -->
 
-    <section class="vision">
+    <section
+      class="vision"
+      id="nuestra-vision"
+    >
+
       <div class="container vision-grid">
 
         <div class="reveal">
@@ -2786,251 +1763,30 @@
         ></div>
 
       </div>
+
     </section>
 
-    <!-- FAQ -->
+    <!-- DOS CAMINOS -->
 
-    <section class="section" id="faq">
-      <div class="container faq-grid">
-
-        <div class="reveal">
-
-          <span class="section-label">
-            Preguntas frecuentes
-          </span>
-
-          <h2 class="section-title">
-            Lo esencial, antes de empezar.
-          </h2>
-
-        </div>
-
-        <div class="reveal">
-
-          <div class="faq-group">
-
-            <div class="faq-category">
-              Anunciantes
-            </div>
-
-            <div class="faq-item">
-
-              <button class="faq-button" type="button">
-
-                <span>
-                  ¿Cuánto cuesta anunciarse en Agua Gratis?
-                </span>
-
-                <span class="faq-icon">+</span>
-
-              </button>
-
-              <div class="faq-answer">
-
-                <p>
-                  Cada campaña se cotiza según sus características.
-                  Solicita una cotización y revisaremos tu campaña.
-                </p>
-
-              </div>
-
-            </div>
-
-            <div class="faq-item">
-
-              <button class="faq-button" type="button">
-
-                <span>
-                  ¿Cuál es la campaña mínima?
-                </span>
-
-                <span class="faq-icon">+</span>
-
-              </button>
-
-              <div class="faq-answer">
-
-                <p>
-                  La campaña mínima inicial es de 1,000 botellas.
-                </p>
-
-              </div>
-
-            </div>
-
-            <div class="faq-item">
-
-              <button class="faq-button" type="button">
-
-                <span>
-                  ¿Puedo reservar más de un espacio publicitario?
-                </span>
-
-                <span class="faq-icon">+</span>
-
-              </button>
-
-              <div class="faq-answer">
-
-                <p>
-                  Sí. Puedes solicitar 1, 2, 3 o los 4 espacios publicitarios
-                  de la botella, sujeto a disponibilidad.
-                </p>
-
-              </div>
-
-            </div>
-
-            <div class="faq-item">
-
-              <button class="faq-button" type="button">
-
-                <span>
-                  ¿Puedo elegir dónde quiero que se distribuya mi campaña?
-                </span>
-
-                <span class="faq-icon">+</span>
-
-              </button>
-
-              <div class="faq-answer">
-
-                <p>
-                  Puedes indicar preferencias de zona, tipo de lugar, evento
-                  y fechas. Agua Gratis revisará las opciones disponibles
-                  antes de confirmar la campaña.
-                </p>
-
-              </div>
-
-            </div>
-
-            <div class="faq-item">
-
-              <button class="faq-button" type="button">
-
-                <span>
-                  ¿Puedo incluir un QR, promoción o redes sociales en mi espacio?
-                </span>
-
-                <span class="faq-icon">+</span>
-
-              </button>
-
-              <div class="faq-answer">
-
-                <p>
-                  Pueden formar parte de la creatividad de una campaña,
-                  sujeto al diseño final y a los requisitos aplicables.
-                </p>
-
-              </div>
-
-            </div>
-
-          </div>
-
-          <div class="faq-group">
-
-            <div class="faq-category">
-              Puntos Agua Gratis
-            </div>
-
-            <div class="faq-item">
-
-              <button class="faq-button" type="button">
-
-                <span>
-                  ¿Quién puede solicitar ser Punto Agua Gratis?
-                </span>
-
-                <span class="faq-icon">+</span>
-
-              </button>
-
-              <div class="faq-answer">
-
-                <p>
-                  Negocios, establecimientos, organizaciones y responsables
-                  de eventos pueden solicitar participar. Todas las solicitudes
-                  están sujetas a evaluación y aprobación.
-                </p>
-
-              </div>
-
-            </div>
-
-            <div class="faq-item">
-
-              <button class="faq-button" type="button">
-
-                <span>
-                  ¿Tiene costo convertirse en Punto Agua Gratis?
-                </span>
-
-                <span class="faq-icon">+</span>
-
-              </button>
-
-              <div class="faq-answer">
-
-                <p>
-                  Los puntos aprobados podrán recibir botellas sin costo
-                  para entregarlas gratuitamente, bajo las condiciones
-                  definidas para cada distribución.
-                </p>
-
-              </div>
-
-            </div>
-
-            <div class="faq-item">
-
-              <button class="faq-button" type="button">
-
-                <span>
-                  ¿Un Punto Agua Gratis puede vender las botellas?
-                </span>
-
-                <span class="faq-icon">+</span>
-
-              </button>
-
-              <div class="faq-answer">
-
-                <p>
-                  No. Las botellas recibidas como Punto Agua Gratis están
-                  destinadas a entregarse gratuitamente. No son para reventa.
-                </p>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- CTA FINAL -->
-
-    <section class="section final-cta">
+    <section class="section section-blue">
 
       <div class="container">
 
-        <div class="final-cta-header reveal">
+        <div class="paths-header reveal">
 
-          <h2>
+          <span class="section-label">
+            Participa
+          </span>
+
+          <h2 class="section-title">
             Elige cómo quieres participar.
           </h2>
 
         </div>
 
-        <div class="cta-grid">
+        <div class="paths-grid">
 
-          <article class="cta-card reveal">
+          <article class="path-card reveal">
 
             <span class="section-label">
               Anunciantes
@@ -3041,16 +1797,19 @@
             </h3>
 
             <p>
-              Cuéntanos sobre tu campaña y solicita una cotización.
+              Conoce cómo funciona la publicidad y solicita una cotización.
             </p>
 
-            <a href="#cotizacion" class="button button-primary">
-              Solicitar cotización
+            <a
+              href="anunciantes.html"
+              class="button button-primary"
+            >
+              Conocer publicidad
             </a>
 
           </article>
 
-          <article class="cta-card reveal">
+          <article class="path-card reveal">
 
             <span class="section-label">
               Distribuidores
@@ -3061,17 +1820,150 @@
             </h3>
 
             <p>
-              Solicita participar como punto de distribución.
+              Conoce cómo funciona la distribución y solicita participar.
             </p>
 
             <a
-              href="#solicitud-distribuidor"
+              href="distribuidores.html"
               class="button button-secondary"
             >
-              Solicitar ser distribuidor
+              Conocer distribución
             </a>
 
           </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- FAQ GENERAL -->
+
+    <section
+      class="section"
+      id="faq"
+    >
+
+      <div class="container faq-grid">
+
+        <div class="reveal">
+
+          <span class="section-label">
+            Preguntas frecuentes
+          </span>
+
+          <h2 class="section-title">
+            Lo esencial sobre Agua Gratis.
+          </h2>
+
+        </div>
+
+        <div class="faq-list reveal">
+
+          <div class="faq-item">
+
+            <button
+              type="button"
+              class="faq-button"
+            >
+              <span>
+                ¿Qué es Agua Gratis?
+              </span>
+
+              <span class="faq-icon">
+                +
+              </span>
+            </button>
+
+            <div class="faq-answer">
+
+              <p>
+                Agua Gratis convierte botellas de agua en espacios
+                publicitarios para marcas para que puedan entregarse
+                gratuitamente a las personas.
+              </p>
+
+            </div>
+
+          </div>
+
+          <div class="faq-item">
+
+            <button
+              type="button"
+              class="faq-button"
+            >
+              <span>
+                ¿Por qué el agua es gratis?
+              </span>
+
+              <span class="faq-icon">
+                +
+              </span>
+            </button>
+
+            <div class="faq-answer">
+
+              <p>
+                El modelo se financia mediante publicidad en las botellas.
+              </p>
+
+            </div>
+
+          </div>
+
+          <div class="faq-item">
+
+            <button
+              type="button"
+              class="faq-button"
+            >
+              <span>
+                ¿Dónde inicia Agua Gratis?
+              </span>
+
+              <span class="faq-icon">
+                +
+              </span>
+            </button>
+
+            <div class="faq-answer">
+
+              <p>
+                Agua Gratis inicia en Ciudad de Guatemala, Guatemala.
+              </p>
+
+            </div>
+
+          </div>
+
+          <div class="faq-item">
+
+            <button
+              type="button"
+              class="faq-button"
+            >
+              <span>
+                ¿Cómo puedo participar?
+              </span>
+
+              <span class="faq-icon">
+                +
+              </span>
+            </button>
+
+            <div class="faq-answer">
+
+              <p>
+                Las empresas pueden conocer las opciones para anunciarse
+                y los negocios, establecimientos y eventos pueden solicitar
+                convertirse en Punto Agua Gratis.
+              </p>
+
+            </div>
+
+          </div>
 
         </div>
 
@@ -3091,7 +1983,11 @@
 
         <div>
 
-          <a href="#inicio" class="brand">
+          <a
+            href="index.html"
+            class="brand"
+            aria-label="Agua Gratis"
+          >
             <span>AGUA</span>
             <span>GRATIS</span>
           </a>
@@ -3102,36 +1998,49 @@
 
         </div>
 
-        <nav
-          class="footer-nav"
-          aria-label="Navegación del footer"
-        >
+        <div class="footer-nav-grid">
 
-          <h3>
-            Explorar
-          </h3>
+          <div class="footer-nav">
 
-          <a href="#como-funciona">
-            Cómo funciona
-          </a>
+            <h3>
+              Explorar
+            </h3>
 
-          <a href="#botella">
-            La botella
-          </a>
+            <a href="#como-funciona">
+              Cómo funciona
+            </a>
 
-          <a href="#anunciantes">
-            Anunciantes
-          </a>
+            <a href="#botella">
+              La botella
+            </a>
 
-          <a href="#distribuidores">
-            Distribuidores
-          </a>
+            <a href="#donde-puede-estar">
+              Dónde puede estar
+            </a>
 
-          <a href="#faq">
-            Preguntas frecuentes
-          </a>
+            <a href="#nuestra-vision">
+              Nuestra visión
+            </a>
 
-        </nav>
+          </div>
+
+          <div class="footer-nav">
+
+            <h3>
+              Participar
+            </h3>
+
+            <a href="anunciantes.html">
+              Anunciantes
+            </a>
+
+            <a href="distribuidores.html">
+              Distribuidores
+            </a>
+
+          </div>
+
+        </div>
 
       </div>
 
@@ -3155,117 +2064,57 @@
 
     /* MENÚ MOBILE */
 
-    const menuButton = document.getElementById("menuButton");
-    const mobileMenu = document.getElementById("mobileMenu");
+    const menuButton =
+      document.getElementById("menuButton");
 
-    menuButton.addEventListener("click", () => {
+    const mobileMenu =
+      document.getElementById("mobileMenu");
 
-      const open = mobileMenu.classList.toggle("open");
+    if (menuButton && mobileMenu) {
 
-      menuButton.setAttribute(
-        "aria-expanded",
-        open ? "true" : "false"
-      );
+      menuButton.addEventListener("click", () => {
 
-      document.body.classList.toggle(
-        "menu-open",
-        open
-      );
-
-    });
-
-    mobileMenu.querySelectorAll("a").forEach(link => {
-
-      link.addEventListener("click", () => {
-
-        mobileMenu.classList.remove("open");
+        const open =
+          mobileMenu.classList.toggle("open");
 
         menuButton.setAttribute(
           "aria-expanded",
-          "false"
+          open ? "true" : "false"
         );
 
-        document.body.classList.remove("menu-open");
+        document.body.classList.toggle(
+          "menu-open",
+          open
+        );
 
       });
 
-    });
+      mobileMenu
+        .querySelectorAll("a")
+        .forEach(link => {
 
+          link.addEventListener("click", () => {
 
-    /* SINGLE SELECT CHIPS */
+            mobileMenu.classList.remove("open");
 
-    document
-      .querySelectorAll(".single-select")
-      .forEach(group => {
+            menuButton.setAttribute(
+              "aria-expanded",
+              "false"
+            );
 
-        group
-          .querySelectorAll(".chip")
-          .forEach(chip => {
-
-            chip.addEventListener("click", () => {
-
-              group
-                .querySelectorAll(".chip")
-                .forEach(item => {
-                  item.classList.remove("selected");
-                });
-
-              chip.classList.add("selected");
-
-            });
+            document.body.classList.remove(
+              "menu-open"
+            );
 
           });
-
-      });
-
-
-    /* MULTI SELECT CHIPS */
-
-    document
-      .querySelectorAll(".multi-select")
-      .forEach(group => {
-
-        group
-          .querySelectorAll(".chip")
-          .forEach(chip => {
-
-            chip.addEventListener("click", () => {
-              chip.classList.toggle("selected");
-            });
-
-          });
-
-      });
-
-
-    /* FECHA DINÁMICA PARA EVENTO / CARRERA / CONCIERTO */
-
-    const pointTypes =
-      document.getElementById("pointTypes");
-
-    const eventDateField =
-      document.getElementById("eventDateField");
-
-    pointTypes
-      .querySelectorAll(".chip")
-      .forEach(chip => {
-
-        chip.addEventListener("click", () => {
-
-          const isEvent =
-            chip.dataset.event === "true";
-
-          eventDateField.classList.toggle(
-            "visible",
-            isEvent
-          );
 
         });
 
-      });
+    }
 
 
-    /* FAQ */
+    /* FAQ
+       Una pregunta abierta a la vez. */
 
     const faqItems =
       document.querySelectorAll(".faq-item");
@@ -3290,7 +2139,8 @@
           const otherAnswer =
             other.querySelector(".faq-answer");
 
-          otherAnswer.style.maxHeight = null;
+          otherAnswer.style.maxHeight =
+            null;
 
         });
 
@@ -3308,220 +2158,12 @@
     });
 
 
-    /* VALIDACIÓN VISUAL BÁSICA
-       NO ENVÍA DATOS */
-
-    function validateTextField(input) {
-
-      const wrapper =
-        input.closest(".form-field");
-
-      const error =
-        wrapper
-          ? wrapper.querySelector(".field-error")
-          : null;
-
-      const valid =
-        input.value.trim().length > 0;
-
-      if (error) {
-        error.classList.toggle(
-          "visible",
-          !valid
-        );
-      }
-
-      return valid;
-
-    }
-
-
-    function validateEmail(input) {
-
-      const wrapper =
-        input.closest(".form-field");
-
-      const error =
-        wrapper.querySelector(".field-error");
-
-      const valid =
-        /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-          .test(input.value.trim());
-
-      error.classList.toggle(
-        "visible",
-        !valid
-      );
-
-      return valid;
-
-    }
-
-
-    /* FORMULARIO ANUNCIANTES */
-
-    const advertiserForm =
-      document.getElementById("advertiserForm");
-
-    advertiserForm.addEventListener(
-      "submit",
-      event => {
-
-        event.preventDefault();
-
-        const name =
-          document.getElementById("adv-name");
-
-        const company =
-          document.getElementById("adv-company");
-
-        const email =
-          document.getElementById("adv-email");
-
-        const quantity =
-          document.getElementById("adv-quantity");
-
-        const quantityError =
-          document.getElementById("quantityError");
-
-        const spaces =
-          document.querySelector(
-            "#advertiserSpaces .chip.selected"
-          );
-
-        const spacesError =
-          document.getElementById("spacesError");
-
-        const nameValid =
-          validateTextField(name);
-
-        const companyValid =
-          validateTextField(company);
-
-        const emailValid =
-          validateEmail(email);
-
-        const quantityValid =
-          quantity.value.trim().length > 0;
-
-        quantityError.classList.toggle(
-          "visible",
-          !quantityValid
-        );
-
-        spacesError.classList.toggle(
-          "visible",
-          !spaces
-        );
-
-        const valid =
-          nameValid &&
-          companyValid &&
-          emailValid &&
-          quantityValid &&
-          Boolean(spaces);
-
-        const message =
-          document.getElementById(
-            "advertiserMessage"
-          );
-
-        if (valid) {
-
-          message.classList.add("visible");
-
-          message.scrollIntoView({
-            behavior: "smooth",
-            block: "nearest"
-          });
-
-        } else {
-
-          message.classList.remove("visible");
-
-        }
-
-      }
-    );
-
-
-    /* FORMULARIO DISTRIBUIDORES */
-
-    const distributorForm =
-      document.getElementById("distributorForm");
-
-    distributorForm.addEventListener(
-      "submit",
-      event => {
-
-        event.preventDefault();
-
-        const name =
-          document.getElementById("dist-name");
-
-        const place =
-          document.getElementById("dist-place");
-
-        const email =
-          document.getElementById("dist-email");
-
-        const location =
-          document.getElementById("dist-location");
-
-        const pointType =
-          document.querySelector(
-            "#pointTypes .chip.selected"
-          );
-
-        const pointTypeError =
-          document.getElementById(
-            "pointTypeError"
-          );
-
-        const valid =
-          validateTextField(name) &&
-          validateTextField(place) &&
-          validateEmail(email) &&
-          validateTextField(location) &&
-          Boolean(pointType);
-
-        pointTypeError.classList.toggle(
-          "visible",
-          Boolean(pointType) === false
-        );
-
-        const message =
-          document.getElementById(
-            "distributorMessage"
-          );
-
-        if (valid) {
-
-          message.classList.add("visible");
-
-          message.scrollIntoView({
-            behavior: "smooth",
-            block: "nearest"
-          });
-
-        } else {
-
-          message.classList.remove("visible");
-
-        }
-
-      }
-    );
-
-
-    /* REVEAL SUAVE AL HACER SCROLL */
+    /* REVEAL SUAVE */
 
     const revealElements =
       document.querySelectorAll(".reveal");
 
-    if (
-      "IntersectionObserver" in window
-    ) {
+    if ("IntersectionObserver" in window) {
 
       const observer =
         new IntersectionObserver(
@@ -3531,8 +2173,9 @@
 
               if (entry.isIntersecting) {
 
-                entry.target
-                  .classList.add("visible");
+                entry.target.classList.add(
+                  "visible"
+                );
 
                 observer.unobserve(
                   entry.target

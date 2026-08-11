@@ -79,7 +79,12 @@ function addWaterSurface(water){
   const localBox=new THREE.Box3().setFromObject(water);
   const size=localBox.getSize(new THREE.Vector3());
   const radius=Math.min(size.x,size.z)*0.49;
-  const y=localBox.max.y+0.0005;
+  const worldPoint = new THREE.Vector3(
+  (localBox.min.x + localBox.max.x) * 0.5,
+  localBox.max.y + 0.0005,
+  (localBox.min.z + localBox.max.z) * 0.5
+);
+const localPoint = model.worldToLocal(worldPoint.clone());
 
   const geometry=new THREE.CylinderGeometry(radius,radius,0.004,128,1,false);
  const material = new THREE.MeshPhysicalMaterial({
@@ -98,12 +103,12 @@ function addWaterSurface(water){
     
   });
 
-  waterSurface=new THREE.Mesh(geometry,material);
-  waterSurface.name="water_surface_meniscus";
-  waterSurface.position.set(0,y,0);
-  waterSurface.renderOrder=6;
-  waterSurface.userData.role="visual_water_surface_only";
-  model.add(waterSurface);
+waterSurface = new THREE.Mesh(geometry, material);
+waterSurface.name = "water_surface_meniscus";
+waterSurface.position.copy(localPoint);
+waterSurface.renderOrder = 6;
+waterSurface.userData.role = "visual_water_surface_only";
+model.add(waterSurface);
 }
 
 new GLTFLoader().load(MODEL_URL,g=>{

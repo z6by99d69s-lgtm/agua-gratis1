@@ -39,8 +39,8 @@ const pmrem=new THREE.PMREMGenerator(renderer);
 const room=new RoomEnvironment();
 scene.environment=pmrem.fromScene(room,.04).texture; room.dispose();
 scene.add(new THREE.HemisphereLight(0xffffff,0xcbd5e1,1.7));
-const key=new THREE.DirectionalLight(0xffffff,3);key.position.set(4,6,7);scene.add(key);
-const fill=new THREE.DirectionalLight(0xffffff,1.6);fill.position.set(-5,2,4);scene.add(fill);
+const key=new THREE.DirectionalLight(0xffffff,6);key.position.set(4,6,7);scene.add(key);
+const fill=new THREE.DirectionalLight(0xffffff,3);fill.position.set(-5,2,4);scene.add(fill);
 
 const pivot=new THREE.Group();scene.add(pivot);
 let model=null,dragging=false,lastX=0,yaw=0;

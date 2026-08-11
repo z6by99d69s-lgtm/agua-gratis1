@@ -312,12 +312,15 @@
     }
 
     .hero-content {
-      position: relative;
-      z-index: 2;
-      padding-left: 34px;
-      transform: translateY(-300px);
-    }
+  position: relative;
+  z-index: 2;
+  padding-left: 34px;
+  transform: translateY(-300px);
+}
 
+.hero-content.reveal.visible {
+  transform: translateY(-300px);
+}
     .hero-eyebrow {
       margin-bottom: 18px;
       color: var(--blue);

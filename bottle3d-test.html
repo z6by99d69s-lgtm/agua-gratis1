@@ -70,6 +70,11 @@ addEventListener("resize",resize);resize();
 
 new GLTFLoader().load(MODEL_URL,g=>{
  model=g.scene;
+ model.traverse((obj) => {
+  if (obj.isMesh) {
+    console.log("MESH:", obj.name, "MATERIAL:", obj.material?.name);
+  }
+});
  normalizeUp(model);
  center(model);
  pivot.add(model);

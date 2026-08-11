@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bottle3D Test</title>
+<style>
+html,body{margin:0;height:100%;font-family:system-ui,sans-serif;background:#eef2f7;color:#0b1f44}body{overflow:hidden}.wrap{height:100%;display:grid;grid-template-rows:auto 1fr}.bar{padding:12px 16px;background:#fff;border-bottom:1px solid #dbe3ee;font-size:14px}.stage{position:relative;touch-action:none}.hint{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);background:#ffffffd9;padding:8px 12px;border-radius:999px;font-size:12px;pointer-events:none}canvas{display:block;width:100%;height:100%}
+</style>
+</head><body><div class="wrap"><div class="bar"><b>Bottle3D — prueba aislada</b> · arrastra/desliza horizontalmente para girar 360°</div><div class="stage" id="stage"><div class="hint">← drag / swipe →</div></div></div>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+const stage=document.getElementById('stage');
+const renderer=new THREE.WebGLRenderer({antialias:true,alpha:true}); renderer.setPixelRatio(Math.min(devicePixelRatio,2)); renderer.outputColorSpace=THREE.SRGBColorSpace; renderer.toneMapping=THREE.ACESFilmicToneMapping; renderer.toneMappingExposure=1.15; stage.appendChild(renderer.domElement);
+const scene=new THREE.Scene(); scene.background=new THREE.Color(0xf1f4f8);
+const camera=new THREE.PerspectiveCamera(32,1,.01,1000); camera.position.set(0,0.15,5.2);
+const pmrem=new THREE.PMREMGenerator(renderer); scene.environment=pmrem.fromScene(new RoomEnvironment(),0.04).texture;
+const key=new THREE.DirectionalLight(0xffffff,3.0); key.position.set(3,4,4); scene.add(key); const fill=new THREE.DirectionalLight(0xddeaff,1.7); fill.position.set(-4,1,2); scene.add(fill); const rim=new THREE.DirectionalLight(0xffffff,2.0); rim.position.set(0,2,-4); scene.add(rim);
+const group=new THREE.Group(); scene.add(group);
+new GLTFLoader().load('./botella-clean-v1.3.glb',g=>{const root=g.scene; group.add(root); const box=new THREE.Box3().setFromObject(root), size=box.getSize(new THREE.Vector3()), center=box.getCenter(new THREE.Vector3()); root.position.sub(center); const scale=3.6/size.y; root.scale.setScalar(scale);
+root.traverse(o=>{if(!o.isMesh)return; const n=o.name.toLowerCase(); if(n.includes('body')) o.material=new THREE.MeshPhysicalMaterial({color:0xffffff,transparent:true,opacity:.20,roughness:.08,metalness:0,transmission:.96,ior:1.47,thickness:.06,envMapIntensity:1.8,side:THREE.DoubleSide,depthWrite:false}); else if(n.includes('water')) o.material=new THREE.MeshPhysicalMaterial({color:0xf8fdff,transparent:true,opacity:.36,roughness:.02,metalness:0,transmission:.88,ior:1.333,thickness:.35,envMapIntensity:1.25,side:THREE.DoubleSide,depthWrite:false}); else if(n.includes('cap')) o.material=new THREE.MeshStandardMaterial({color:0xffffff,roughness:.38,metalness:0}); });
+});
+let dragging=false,lastX=0; const down=e=>{dragging=true;lastX=e.clientX;stage.setPointerCapture?.(e.pointerId)}; const move=e=>{if(!dragging)return;const dx=e.clientX-lastX;lastX=e.clientX;group.rotation.y+=dx*.012}; const up=()=>dragging=false; stage.addEventListener('pointerdown',down); stage.addEventListener('pointermove',move); stage.addEventListener('pointerup',up); stage.addEventListener('pointercancel',up);
+function resize(){const w=stage.clientWidth,h=stage.clientHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix()} addEventListener('resize',resize);resize();
+(function loop(){requestAnimationFrame(loop);renderer.render(scene,camera)})();
+</script></body></html>

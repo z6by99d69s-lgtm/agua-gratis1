@@ -70,9 +70,22 @@ addEventListener("resize",resize);resize();
 
 new GLTFLoader().load(MODEL_URL,g=>{
  model=g.scene;
- model.traverse((obj) => {
-  if (obj.isMesh) {
-    console.log("MESH:", obj.name, "MATERIAL:", obj.material?.name);
+model.traverse((obj) => {
+  if (!obj.isMesh) return;
+
+  if (obj.name === "water_volume") {
+    obj.material = new THREE.MeshPhysicalMaterial({
+      color: 0xf4fbff,
+      transparent: true,
+      opacity: 0.48,
+      transmission: 0.08,
+      roughness: 0.08,
+      metalness: 0,
+      ior: 1.333,
+      thickness: 0.04,
+      envMapIntensity: 1.2,
+      side: THREE.DoubleSide
+    });
   }
 });
  normalizeUp(model);

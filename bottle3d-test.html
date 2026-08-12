@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bottle3D — prueba aislada</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden}
+body{font-family:Inter,system-ui,sans-serif;background:#f4f7fb;color:#0b1f44}
+.page{width:100%;height:100%;display:grid;grid-template-rows:auto 1fr}
+header{padding:16px 20px;border-bottom:1px solid #dce5f0;background:rgba(255,255,255,.9)}
+header span{color:#64748b}.stage{position:relative;min-height:0;touch-action:none;cursor:grab}
+.stage.dragging{cursor:grabbing}canvas{display:block;width:100%;height:100%}
+.hint,.status{position:absolute;background:rgba(255,255,255,.92);border:1px solid #e2e8f0;color:#64748b;pointer-events:none}
+.hint{left:50%;bottom:22px;transform:translateX(-50%);padding:10px 16px;border-radius:999px}
+.status{left:16px;top:16px;padding:8px 11px;border-radius:10px;font-size:.78rem}.error{color:#b42318}
+</style>
+</head>
+<body><div class="page">
+<header><strong>Bottle3D — prueba aislada</strong><span> · arrastra/desliza horizontalmente para girar 360°</span></header>
+<div class="stage" id="stage"><div class="status" id="status">Cargando botella…</div><div class="hint">← drag / swipe →</div></div>
+</div>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from "three";
+import {GLTFLoader} from "three/addons/loaders/GLTFLoader.js";
+import {RoomEnvironment} from "three/addons/environments/RoomEnvironment.js";
+
+const MODEL_URL="./botella-clean-v1.3.glb";
+const stage=document.getElementById("stage"), status=document.getElementById("status");
+const scene=new THREE.Scene(); scene.background=new THREE.Color(0xcbd5e1);
+const camera=new THREE.PerspectiveCamera(32,1,.01,1000);
+const renderer=new THREE.WebGLRenderer({antialias:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+renderer.outputColorSpace=THREE.SRGBColorSpace;
+renderer.toneMapping=THREE.ACESFilmicToneMapping; renderer.toneMappingExposure=0.75;
+stage.prepend(renderer.domElement);
+
+const pmrem=new THREE.PMREMGenerator(renderer);
+const room=new RoomEnvironment();
+scene.environment=pmrem.fromScene(room,.04).texture; room.dispose();
+scene.add(new THREE.HemisphereLight(0xffffff,0xcbd5e1,1.7));
+const key=new THREE.DirectionalLight(0xffffff,3); key.position.set(4,6,7); scene.add(key);
+const fill=new THREE.DirectionalLight(0xffffff,1.6); fill.position.set(-5,2,4); scene.add(fill);
+
+const pivot=new THREE.Group(); scene.add(pivot);
+let model=null, dragging=false, lastX=0, yaw=0, waterSurface=null;
+
+function boxOf(o){o.updateMatrixWorld(true); return new THREE.Box3().setFromObject(o)}
+function normalizeUp(o){
+  o.rotation.set(0,0,0); let s=boxOf(o).getSize(new THREE.Vector3());
+  if(s.x>=s.y&&s.x>=s.z) o.rotation.z=Math.PI/2;
+  else if(s.z>=s.x&&s.z>=s.y) o.rotation.x=-Math.PI/2;
+  o.updateMatrixWorld(true);
+}
+function center(o){
+  const c=boxOf(o).getCenter(new THREE.Vector3());
+  o.position.sub(c); o.updateMatrixWorld(true);
+}
+function frame(){
+  if(!model)return;
+  const b=boxOf(pivot), s=b.getSize(new THREE.Vector3()), c=b.getCenter(new THREE.Vector3());
+  const vf=THREE.MathUtils.degToRad(camera.fov), a=Math.max(stage.clientWidth/stage.clientHeight,.1);
+  const hf=2*Math.atan(Math.tan(vf/2)*a);
+  const d=Math.max((s.y/2)/Math.tan(vf/2),(Math.max(s.x,s.z)/2)/Math.tan(hf/2))*1.3;
+  camera.near=Math.max(d/100,.01); camera.far=d*100;
+  camera.position.set(c.x,c.y,c.z+d); camera.lookAt(c); camera.updateProjectionMatrix();
+}
+function resize(){
+  const w=Math.max(stage.clientWidth,1), h=Math.max(stage.clientHeight,1);
+  renderer.setSize(w,h,false); camera.aspect=w/h; camera.updateProjectionMatrix(); frame();
+}
+addEventListener("resize",resize); resize();
+
+function addWaterSurface(water){
+  return;
+}
+
+function rebuildWaterVolume(water){
+  if(!water || !water.isMesh || !water.geometry?.attributes?.position) return;
+
+  water.geometry.computeBoundingBox();
+  const box = water.geometry.boundingBox;
+  const size = box.getSize(new THREE.Vector3());
+  const center = box.getCenter(new THREE.Vector3());
+
+  const halfH = size.z * 0.5;
+  const bodyR = Math.min(size.x, size.y) * 0.49;
+
+  const pts = [
+    new THREE.Vector2(0,             -halfH),
+    new THREE.Vector2(bodyR*0.78,    -halfH),
+    new THREE.Vector2(bodyR*0.92,    -halfH + size.z*0.018),
+    new THREE.Vector2(bodyR*0.985,   -halfH + size.z*0.045),
+    new THREE.Vector2(bodyR,         -halfH + size.z*0.075),
+    new THREE.Vector2(bodyR,          halfH - size.z*0.10),
+    new THREE.Vector2(bodyR*0.985,    halfH - size.z*0.065),
+    new THREE.Vector2(bodyR*0.94,     halfH - size.z*0.035),
+    new THREE.Vector2(bodyR*0.88,     halfH),
+    new THREE.Vector2(0,              halfH)
+  ];
+
+  const g = new THREE.LatheGeometry(pts,128);
+  g.rotateX(Math.PI/2);
+  g.translate(center.x,center.y,center.z);
+  g.computeVertexNormals();
+
+  water.geometry.dispose();
+  water.geometry = g;
+
+  water.material = new THREE.MeshPhysicalMaterial({
+    color: 0xf5fbfd,
+    transparent: true,
+    opacity: 0.32,
+    transmission: 0.72,
+    roughness: 0.055,
+    metalness: 0,
+    ior: 1.333,
+    thickness: 0.035,
+    clearcoat: 0.18,
+    clearcoatRoughness: 0.06,
+    envMapIntensity: 1.25,
+    side: THREE.DoubleSide,
+    depthWrite: false
+  });
+
+  water.renderOrder = 2;
+}
+
+new GLTFLoader().load(MODEL_URL,g=>{
+  model=g.scene;
+
+  model.traverse(obj=>{
+    if(!obj.isMesh) return;
+    if(obj.name==="water_volume"){
+      rebuildWaterVolume(obj);
+    }
+  });
+  normalizeUp(model);
+  center(model);
+  pivot.add(model);
+  frame();
+  status.textContent="Modelo cargado · rotación Y únicamente";
+},undefined,e=>{
+  console.error(e); status.textContent="Error cargando botella-clean-v1.3.glb"; status.classList.add("error");
+});
+
+stage.addEventListener("pointerdown",e=>{
+  dragging=true; lastX=e.clientX; stage.classList.add("dragging"); stage.setPointerCapture(e.pointerId);
+});
+stage.addEventListener("pointermove",e=>{
+  if(!dragging||!model)return;
+  const dx=e.clientX-lastX; lastX=e.clientX; yaw+=dx*.009; pivot.rotation.y=yaw;
+});
+function stop(e){
+  dragging=false; stage.classList.remove("dragging");
+  try{stage.releasePointerCapture(e.pointerId)}catch{}
+}
+stage.addEventListener("pointerup",stop); stage.addEventListener("pointercancel",stop);
+(function loop(){requestAnimationFrame(loop); renderer.render(scene,camera)})();
+</script></body></html>

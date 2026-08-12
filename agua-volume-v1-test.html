@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Water Master V1 - prueba aislada</title>
+<style>
+html,body{margin:0;height:100%;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#e9eef3;color:#17324d;overflow:hidden}
+header{height:58px;display:flex;align-items:center;padding:0 22px;background:white;border-bottom:1px solid #d8e0e8;font-weight:700}
+#stage{position:fixed;left:0;right:0;top:59px;bottom:0;touch-action:none}
+.badge{position:absolute;top:16px;left:16px;background:rgba(255,255,255,.9);padding:10px 14px;border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,.06);z-index:2;font-size:14px}
+.help{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);background:rgba(255,255,255,.92);padding:12px 18px;border-radius:999px;box-shadow:0 5px 18px rgba(0,0,0,.08);z-index:2}
+#error{position:absolute;top:16px;right:16px;background:#fff0f0;color:#a00000;padding:10px 14px;border-radius:12px;display:none;z-index:3}
+</style>
+</head>
+<body>
+<header>Water Master V1 — prueba aislada · arrastra/desliza horizontalmente para girar 360°</header>
+<div id="stage"><div class="badge">agua_main + agua_surface · geometría independiente</div><div class="help">← drag / swipe →</div><div id="error"></div></div>
+<script type="module">
+import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
+import { GLTFLoader } from 'https://unpkg.com/three@0.160.0/examples/jsm/loaders/GLTFLoader.js';
+
+const stage=document.getElementById('stage');
+const err=document.getElementById('error');
+const renderer=new THREE.WebGLRenderer({antialias:true,alpha:false});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+renderer.outputColorSpace=THREE.SRGBColorSpace;
+renderer.toneMapping=THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure=1.15;
+stage.appendChild(renderer.domElement);
+
+const scene=new THREE.Scene();
+scene.background=new THREE.Color(0xe8edf2);
+scene.add(new THREE.HemisphereLight(0xffffff,0x9aa9b8,2.2));
+const key=new THREE.DirectionalLight(0xffffff,3.2); key.position.set(3,6,7); scene.add(key);
+const fill=new THREE.DirectionalLight(0xffffff,1.2); fill.position.set(-4,2,4); scene.add(fill);
+
+const camera=new THREE.PerspectiveCamera(28,1,0.01,1000);
+const root=new THREE.Group(); scene.add(root);
+let model=null,dragging=false,lastX=0;
+
+function fit(){
+  if(!model)return;
+  const box=new THREE.Box3().setFromObject(model), size=box.getSize(new THREE.Vector3()), c=box.getCenter(new THREE.Vector3());
+  const maxDim=Math.max(size.x,size.y,size.z); const fov=THREE.MathUtils.degToRad(camera.fov);
+  const d=(maxDim/2)/Math.tan(fov/2)*1.2;
+  camera.position.set(0,0,d); camera.lookAt(c); camera.updateProjectionMatrix();
+}
+function resize(){const w=Math.max(stage.clientWidth,1),h=Math.max(stage.clientHeight,1);renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();fit();}
+window.addEventListener('resize',resize);
+
+new GLTFLoader().load('./agua-volume-v1.glb',g=>{
+  model=g.scene;
+  model.traverse(o=>{
+    if(!o.isMesh)return;
+    // Geometry-review material: visible enough to inspect shape, still translucent.
+    if(o.name==='agua_main') o.material=new THREE.MeshPhysicalMaterial({color:0xcfe8ef,transparent:true,opacity:.58,roughness:.13,transmission:.05,ior:1.333,side:THREE.DoubleSide});
+    if(o.name==='agua_surface') o.material=new THREE.MeshPhysicalMaterial({color:0xdff4fa,transparent:true,opacity:.78,roughness:.06,transmission:0.02,clearcoat:.4,clearcoatRoughness:.04,side:THREE.DoubleSide});
+  });
+  root.add(model); resize();
+},undefined,e=>{err.textContent='Error cargando agua-volume-v1.glb';err.style.display='block';console.error(e);});
+
+stage.addEventListener('pointerdown',e=>{dragging=true;lastX=e.clientX;stage.setPointerCapture(e.pointerId);});
+stage.addEventListener('pointermove',e=>{if(!dragging||!model)return;const dx=e.clientX-lastX;lastX=e.clientX;root.rotation.y+=dx*0.008;});
+stage.addEventListener('pointerup',e=>{dragging=false;try{stage.releasePointerCapture(e.pointerId)}catch{}});
+stage.addEventListener('pointercancel',()=>dragging=false);
+
+function loop(){requestAnimationFrame(loop);renderer.render(scene,camera)}
+loop();resize();
+</script>
+</body>
+</html>

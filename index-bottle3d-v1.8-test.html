@@ -178,6 +178,7 @@ function installBottle(){
       model.traverse(o=>{
         if(o.isMesh) o.castShadow = false;
       });
+      model.rotation.z = Math.PI / 2;
       pivot.add(model);
       resize();
       setStatus('Bottle3D V1.8 integrado en Home','ok');

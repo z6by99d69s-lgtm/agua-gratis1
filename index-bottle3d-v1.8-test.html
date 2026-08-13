@@ -185,7 +185,23 @@ function installBottle(){
       model.rotation.set(-Math.PI/2,0,0);
       model.traverse(o=>{
         if(o.isMesh) o.castShadow = false;
-      });
+
+if(o.name === 'geometry_0'){
+  o.material = new THREE.MeshPhysicalMaterial({
+    color: 0xffffff,
+    transparent: true,
+    opacity: 0.85,
+    transmission: 0.15,
+    roughness: 0.10,
+    metalness: 0,
+    ior: 1.47,
+    thickness: 0.008,
+    clearcoat: 0.30,
+    clearcoatRoughness: 0.08,
+    envMapIntensity: 1.2,
+    side: THREE.DoubleSide
+  });
+}
       pivot.add(model);
       resize();
       iframe.style.visibility = 'visible';

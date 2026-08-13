@@ -2107,8 +2107,10 @@ rgba(112, 150, 174, 0.35) 63%,
       scene.add(pivot);
 
       let model = null;
-      let dragging = false;
-      let lastX = 0;
+let dragging = false;
+let lastX = 0;
+const autoRotate = sizeKind === "hero";
+const autoRotateSpeed = 0.006;
 
       function getBox(object) {
         object.updateMatrixWorld(true);
@@ -2160,10 +2162,15 @@ rgba(112, 150, 174, 0.35) 63%,
         camera.updateProjectionMatrix();
       }
 
-      function frameLoop() {
-        requestAnimationFrame(frameLoop);
-        renderer.render(scene, camera);
-      }
+    function frameLoop() {
+  requestAnimationFrame(frameLoop);
+
+  if (autoRotate && model) {
+    pivot.rotation.y += autoRotateSpeed;
+  }
+
+  renderer.render(scene, camera);
+}
 
       const loader = new GLTFLoader();
 
@@ -2195,6 +2202,7 @@ rgba(112, 150, 174, 0.35) 63%,
 
           window.addEventListener("resize", resizeAndFrame);
 
+          if (!autoRotate) {
           host.addEventListener("pointerdown", (event) => {
             dragging = true;
             lastX = event.clientX;
@@ -2218,7 +2226,7 @@ rgba(112, 150, 174, 0.35) 63%,
 
           host.addEventListener("pointerup", stopDrag);
           host.addEventListener("pointercancel", stopDrag);
-
+}
           frameLoop();
         },
         undefined,

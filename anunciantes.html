@@ -159,7 +159,14 @@
       font-weight: 700;
       line-height: 0.92;
       letter-spacing: -0.04em;
+    transform: translateX(-90px);
     }
+    .brand img {
+  display: block;
+  width: auto;
+  height: 54px;
+  object-fit: contain;
+}
 
     .brand span:last-child {
       color: var(--blue-dark);
@@ -934,9 +941,11 @@ rgba(112, 150, 174, 0.35) 63%,
       }
 
       .navbar-inner {
-        min-height: 68px;
-      }
-
+        min-height: 68px; 
+     }
+.brand img {
+  height: 36px;
+}
       .nav-links {
         display: none;
       }
@@ -1165,8 +1174,10 @@ rgba(112, 150, 174, 0.35) 63%,
         class="brand"
         aria-label="Agua Gratis"
       >
-        <span>AGUA</span>
-        <span>GRATIS</span>
+      <img
+  src="logo-horizontal.png"
+  alt="Agua Gratis"
+>
       </a>
 
       <nav class="nav-links" aria-label="Navegación principal">

@@ -12,16 +12,16 @@
   envMapIntensity:1.5,
   side:THREE.DoubleSide
 if(o.name==='water_volume')o.material=new THREE.MeshPhysicalMaterial({
-  color:0x28c9c4,
+  color:0x55d6d2,
   transparent:true,
-  opacity:0.72,
-  transmission:0.08,
+  opacity:0.52,
+  transmission:0.22,
   roughness:0.045,
   metalness:0,
   ior:1.333,
-  thickness:0.06,
-  clearcoat:0.22,
+  thickness:0.055,
+  clearcoat:0.2,
   clearcoatRoughness:0.05,
-  envMapIntensity:1.4,
+  envMapIntensity:1.35,
   side:THREE.DoubleSide
 });});normalizeUp(model);center(model);pivot.add(model);frame();status.textContent='V1.8 · PET visible · agua turquesa · etiqueta 85% · frente 01/02 · trasera 03/04'},undefined,e=>{console.error(e);status.textContent='Error cargando '+URL;status.classList.add('error')});stage.addEventListener('pointerdown',e=>{drag=true;lastX=e.clientX;stage.setPointerCapture(e.pointerId)});stage.addEventListener('pointermove',e=>{if(!drag||!model)return;const dx=e.clientX-lastX;lastX=e.clientX;pivot.rotation.y+=dx*.009});function stop(e){drag=false;try{stage.releasePointerCapture(e.pointerId)}catch{}}stage.addEventListener('pointerup',stop);stage.addEventListener('pointercancel',stop);(function loop(){requestAnimationFrame(loop);renderer.render(scene,camera)})();</script></body></html>

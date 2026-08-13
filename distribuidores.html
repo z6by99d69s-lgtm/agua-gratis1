@@ -160,8 +160,14 @@
       font-weight: 700;
       line-height: 0.92;
       letter-spacing: -0.04em;
+    transform: translateX(-90px);
     }
-
+.brand img {
+  display: block;
+  width: auto;
+  height: 54px;
+  object-fit: contain;
+}
     .brand span:last-child {
       margin-top: 3px;
       color: var(--blue-dark);
@@ -745,6 +751,9 @@
       .navbar-inner {
         min-height: 68px;
       }
+      .brand img {
+  height: 36px;
+}
 
       .nav-links {
         display: none;
@@ -866,8 +875,10 @@
     <div class="container navbar-inner">
 
       <a href="index.html" class="brand" aria-label="Agua Gratis">
-        <span>AGUA</span>
-        <span>GRATIS</span>
+       <img
+  src="logo-horizontal.png"
+  alt="Agua Gratis"
+>
       </a>
 
       <nav class="nav-links">

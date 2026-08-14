@@ -289,27 +289,92 @@
       display: flex;
       align-items: center;
       overflow: hidden;
-      background: var(--white);
+      isolation: isolate;
+      background:
+        linear-gradient(
+          90deg,
+          #ffffff 0%,
+          #ffffff 37%,
+          #f8fcfe 46%,
+          #eaf5f9 55%,
+          #c9e0ea 69%,
+          #9fc0d1 84%,
+          #7096AE 100%
+        );
     }
 
-    .hero::before {
-      content: "";
-      position: absolute;
-      top: -3%;
-      right: -3%;
-      width: 82%;
-      height: 108%;
-      pointer-events: none;
-      z-index: 0;
+    /*
+      HERO WATER SYSTEM
 
+      Esto no es una única curva.
+      La masa principal incluye:
+      - cuerpo de agua irregular
+      - zonas de transparencia
+      - reflejos
+      - refracción
+      - crestas
+      - sombras internas
+      - gotas integradas
+    */
+
+    .hero-water {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .hero-water svg {
+      position: absolute;
+      top: -4%;
+      right: -1%;
+      width: 72%;
+      height: 110%;
+      overflow: visible;
+    }
+
+    .hero-water-glow {
+      position: absolute;
+      z-index: 0;
+      top: 6%;
+      right: -5%;
+      width: 63%;
+      height: 90%;
+      pointer-events: none;
+      opacity: 0.9;
       background:
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 700' preserveAspectRatio='none'%3E%3Cdefs%3E%3ClinearGradient id='water' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%23dff1f8' stop-opacity='0.56'/%3E%3Cstop offset='22%25' stop-color='%23c6e1ec' stop-opacity='0.74'/%3E%3Cstop offset='47%25' stop-color='%239fc2d5' stop-opacity='0.84'/%3E%3Cstop offset='72%25' stop-color='%237096ae' stop-opacity='0.94'/%3E%3Cstop offset='100%25' stop-color='%237096ae' stop-opacity='1'/%3E%3C/linearGradient%3E%3ClinearGradient id='shine' x1='0' y1='0' x2='1' y2='0'%3E%3Cstop offset='0%25' stop-color='%23ffffff' stop-opacity='0.02'/%3E%3Cstop offset='50%25' stop-color='%23ffffff' stop-opacity='0.35'/%3E%3Cstop offset='100%25' stop-color='%23ffffff' stop-opacity='0.06'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M1000 0 H735 C667 76 576 101 480 142 C366 190 282 251 276 313 C270 375 340 419 430 454 C514 488 566 527 542 577 C519 627 456 655 433 700 H1000 Z' fill='url(%23water)'/%3E%3Cpath d='M735 0 C667 76 576 101 480 142 C366 190 282 251 276 313 C270 375 340 419 430 454 C514 488 566 527 542 577 C519 627 456 655 433 700' fill='none' stroke='url(%23shine)' stroke-width='12' stroke-linecap='round'/%3E%3Cpath d='M765 0 C699 70 604 111 494 152 C384 194 318 249 311 310 C304 365 366 402 445 435 C531 472 590 520 566 577' fill='none' stroke='%23ffffff' stroke-opacity='0.18' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E")
-        center / 100% 100% no-repeat;
+        radial-gradient(
+          ellipse at 66% 42%,
+          rgba(255,255,255,0.76) 0%,
+          rgba(220,242,250,0.45) 20%,
+          rgba(173,211,227,0.20) 42%,
+          rgba(112,150,174,0) 70%
+        );
+      filter: blur(18px);
+    }
+
+    .hero-water-shadow {
+      position: absolute;
+      z-index: 0;
+      right: -8%;
+      bottom: -20%;
+      width: 67%;
+      height: 55%;
+      pointer-events: none;
+      background:
+        radial-gradient(
+          ellipse at 65% 50%,
+          rgba(72, 119, 146, 0.28) 0%,
+          rgba(112, 150, 174, 0.15) 34%,
+          rgba(112, 150, 174, 0) 72%
+        );
+      filter: blur(24px);
     }
 
     .hero-inner {
       position: relative;
-      z-index: 1;
+      z-index: 2;
       width: 100%;
       display: grid;
       grid-template-columns: 45% 55%;
@@ -320,7 +385,7 @@
 
     .hero-content {
       position: relative;
-      z-index: 2;
+      z-index: 4;
       padding-left: 54px;
       transform: translateY(-110px);
     }
@@ -377,11 +442,12 @@
 
     .hero-product {
       position: relative;
+      z-index: 3;
       min-height: 650px;
       display: flex;
       align-items: center;
       justify-content: center;
-      transform: translateX(220px) translateY(0px);
+      transform: translateX(300px) translateY(180px);
     }
 
     .product-glow {
@@ -906,6 +972,11 @@
         min-height: 590px;
       }
 
+      .hero-water svg {
+        right: -8%;
+        width: 80%;
+      }
+
       .where-grid {
         grid-template-columns: repeat(2, 1fr);
       }
@@ -984,13 +1055,36 @@
 
       .hero {
         min-height: auto;
+        background:
+          linear-gradient(
+            180deg,
+            #ffffff 0%,
+            #ffffff 37%,
+            #f2f9fc 48%,
+            #c8e0ea 66%,
+            #8eb1c4 84%,
+            #7096AE 100%
+          );
       }
 
-      .hero::before {
-        top: 18%;
-        right: -48%;
-        width: 138%;
-        height: 82%;
+      .hero-water svg {
+        top: 29%;
+        right: -50%;
+        width: 150%;
+        height: 72%;
+      }
+
+      .hero-water-glow {
+        top: 42%;
+        right: -30%;
+        width: 130%;
+        height: 55%;
+      }
+
+      .hero-water-shadow {
+        right: -30%;
+        bottom: -10%;
+        width: 130%;
       }
 
       .hero-inner {
@@ -1309,6 +1403,457 @@
 
     <section class="hero" id="inicio">
 
+      <!--
+        CAPAS DE AGUA DEL HERO.
+        Son puramente visuales y están detrás de Bottle3D.
+      -->
+
+      <div class="hero-water-glow" aria-hidden="true"></div>
+      <div class="hero-water-shadow" aria-hidden="true"></div>
+
+      <div class="hero-water" aria-hidden="true">
+        <svg viewBox="0 0 1100 760" preserveAspectRatio="none">
+
+          <defs>
+
+            <linearGradient id="waterBody" x1="0%" y1="45%" x2="100%" y2="55%">
+              <stop offset="0%" stop-color="#dff4fa" stop-opacity="0.15"/>
+              <stop offset="12%" stop-color="#c9e7f1" stop-opacity="0.50"/>
+              <stop offset="31%" stop-color="#add2e1" stop-opacity="0.74"/>
+              <stop offset="57%" stop-color="#8bb4c9" stop-opacity="0.86"/>
+              <stop offset="82%" stop-color="#7096AE" stop-opacity="0.96"/>
+              <stop offset="100%" stop-color="#7096AE" stop-opacity="1"/>
+            </linearGradient>
+
+            <linearGradient id="crestLight" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.96"/>
+              <stop offset="22%" stop-color="#effbff" stop-opacity="0.88"/>
+              <stop offset="52%" stop-color="#c8e8f3" stop-opacity="0.50"/>
+              <stop offset="100%" stop-color="#8db5c9" stop-opacity="0"/>
+            </linearGradient>
+
+            <linearGradient id="deepWater" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#7096AE" stop-opacity="0"/>
+              <stop offset="45%" stop-color="#628ca6" stop-opacity="0.10"/>
+              <stop offset="100%" stop-color="#4f7f9b" stop-opacity="0.34"/>
+            </linearGradient>
+
+            <radialGradient id="sunFlash">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.94"/>
+              <stop offset="28%" stop-color="#f2fbff" stop-opacity="0.62"/>
+              <stop offset="67%" stop-color="#cceaf4" stop-opacity="0.17"/>
+              <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+            </radialGradient>
+
+            <radialGradient id="bubbleFill">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.72"/>
+              <stop offset="38%" stop-color="#dff5fb" stop-opacity="0.46"/>
+              <stop offset="75%" stop-color="#8fc2d7" stop-opacity="0.20"/>
+              <stop offset="100%" stop-color="#7096AE" stop-opacity="0.05"/>
+            </radialGradient>
+
+            <filter id="softWaterShadow" x="-30%" y="-30%" width="160%" height="160%">
+              <feGaussianBlur stdDeviation="13"/>
+            </filter>
+
+            <filter id="softGlow" x="-40%" y="-40%" width="180%" height="180%">
+              <feGaussianBlur stdDeviation="7"/>
+            </filter>
+
+            <filter id="tinyBlur" x="-30%" y="-30%" width="160%" height="160%">
+              <feGaussianBlur stdDeviation="2.2"/>
+            </filter>
+
+          </defs>
+
+          <!--
+            SOMBRA/PROFUNDIDAD BAJO LA MASA PRINCIPAL
+          -->
+          <path
+            d="
+              M1100,-20
+              L740,-20
+              C695,30 661,59 606,74
+              C545,91 496,82 443,106
+              C387,131 360,165 370,198
+              C378,224 410,235 417,258
+              C426,288 394,309 351,325
+              C298,345 253,374 244,413
+              C236,450 264,476 310,491
+              C349,504 382,508 401,531
+              C421,556 408,583 377,609
+              C347,635 314,655 307,691
+              C300,723 327,748 365,780
+              L1100,780 Z
+            "
+            fill="#4f7f9b"
+            opacity="0.18"
+            filter="url(#softWaterShadow)"
+            transform="translate(18 18)"
+          />
+
+          <!--
+            CUERPO PRINCIPAL DEL AGUA.
+            Borde deliberadamente irregular: crece, se estrecha,
+            vuelve a abrirse y cae hacia la parte inferior.
+          -->
+          <path
+            d="
+              M1100,-20
+              L748,-20
+
+              C716,14 693,44 650,59
+              C621,69 592,64 565,76
+              C539,87 524,106 499,113
+              C474,120 451,112 427,123
+
+              C391,140 366,169 371,196
+              C375,219 400,228 413,244
+              C427,261 426,278 410,293
+              C394,308 363,313 335,325
+
+              C292,343 253,371 244,405
+              C235,439 255,465 291,481
+              C318,493 348,492 372,504
+              C396,516 412,535 410,555
+
+              C407,578 383,598 358,620
+              C329,646 307,672 309,701
+              C311,730 337,755 372,780
+
+              L1100,780
+              Z
+            "
+            fill="url(#waterBody)"
+          />
+
+          <!--
+            ZONA DE AGUA MÁS PROFUNDA A LA DERECHA
+          -->
+          <path
+            d="
+              M1100,-20
+              L846,-20
+              C805,60 801,126 823,188
+              C848,259 830,323 805,379
+              C777,443 789,517 826,574
+              C858,624 872,690 854,780
+              L1100,780 Z
+            "
+            fill="url(#deepWater)"
+          />
+
+          <!--
+            CRESTA SUPERIOR: capa translúcida levantada
+          -->
+          <path
+            d="
+              M752,-8
+              C706,39 674,68 626,79
+              C590,88 557,77 524,91
+              C498,102 484,121 458,129
+              C433,136 406,130 389,145
+              C372,159 365,177 371,194
+
+              C382,176 398,163 418,155
+              C440,146 463,151 488,143
+              C516,134 533,115 558,105
+              C589,92 620,101 654,91
+              C699,77 728,46 772,3
+              Z
+            "
+            fill="url(#crestLight)"
+            opacity="0.93"
+          />
+
+          <!--
+            FILAMENTO FINO SUPERIOR / REFLEJO DE SOL
+          -->
+          <path
+            d="
+              M758,0
+              C716,42 681,72 630,84
+              C595,93 563,83 530,96
+              C501,107 485,127 459,135
+              C434,143 411,138 393,151
+            "
+            fill="none"
+            stroke="#ffffff"
+            stroke-width="7"
+            stroke-linecap="round"
+            opacity="0.70"
+          />
+
+          <path
+            d="
+              M752,8
+              C710,49 678,78 629,90
+              C593,99 565,91 533,103
+            "
+            fill="none"
+            stroke="#d9f3fa"
+            stroke-width="15"
+            stroke-linecap="round"
+            opacity="0.26"
+            filter="url(#softGlow)"
+          />
+
+          <!--
+            LÓBULO CENTRAL: da la sensación de que el agua
+            se lanza hacia la izquierda y vuelve.
+          -->
+          <path
+            d="
+              M414,247
+              C393,263 391,283 409,297
+              C426,310 449,310 461,327
+              C472,342 464,361 444,371
+              C419,383 390,375 370,389
+              C350,403 351,426 368,440
+              C344,436 320,425 309,407
+              C296,386 305,364 326,347
+              C348,329 379,322 398,306
+              C415,292 418,274 414,247
+              Z
+            "
+            fill="#d5edf6"
+            opacity="0.50"
+          />
+
+          <path
+            d="
+              M408,258
+              C397,278 405,294 424,304
+              C447,317 463,328 458,345
+            "
+            fill="none"
+            stroke="#ffffff"
+            stroke-width="5"
+            stroke-linecap="round"
+            opacity="0.64"
+          />
+
+          <!--
+            PLIEGUE INFERIOR: transparencia y volumen
+          -->
+          <path
+            d="
+              M405,522
+              C431,544 432,568 414,591
+              C396,614 365,632 349,655
+              C331,681 334,708 357,733
+              C377,753 404,765 425,780
+
+              L546,780
+              C510,742 494,709 501,674
+              C509,633 542,604 551,568
+              C558,540 547,516 522,495
+              C489,469 453,463 421,453
+
+              C447,477 454,501 441,519
+              C431,533 419,535 405,522
+              Z
+            "
+            fill="#c5e3ef"
+            opacity="0.35"
+          />
+
+          <path
+            d="
+              M412,528
+              C435,551 433,574 414,598
+              C394,623 365,639 351,662
+            "
+            fill="none"
+            stroke="#ffffff"
+            stroke-width="6"
+            stroke-linecap="round"
+            opacity="0.46"
+          />
+
+          <!--
+            REFLEJOS INTERNOS IRREGULARES
+          -->
+          <path
+            d="
+              M507,169
+              C548,150 584,154 615,169
+              C642,182 664,181 687,166
+            "
+            fill="none"
+            stroke="#ffffff"
+            stroke-width="8"
+            stroke-linecap="round"
+            opacity="0.28"
+            filter="url(#tinyBlur)"
+          />
+
+          <path
+            d="
+              M486,188
+              C528,170 560,174 590,188
+            "
+            fill="none"
+            stroke="#f5fdff"
+            stroke-width="3"
+            stroke-linecap="round"
+            opacity="0.70"
+          />
+
+          <path
+            d="
+              M548,405
+              C602,382 656,384 700,408
+              C731,425 757,426 785,414
+            "
+            fill="none"
+            stroke="#e9f8fc"
+            stroke-width="8"
+            stroke-linecap="round"
+            opacity="0.22"
+            filter="url(#tinyBlur)"
+          />
+
+          <path
+            d="
+              M565,419
+              C610,402 652,406 687,422
+            "
+            fill="none"
+            stroke="#ffffff"
+            stroke-width="3"
+            stroke-linecap="round"
+            opacity="0.48"
+          />
+
+          <!--
+            FLASHES DE LUZ SOBRE EL AGUA
+          -->
+          <ellipse
+            cx="660"
+            cy="146"
+            rx="126"
+            ry="70"
+            fill="url(#sunFlash)"
+            opacity="0.40"
+            transform="rotate(-18 660 146)"
+          />
+
+          <ellipse
+            cx="793"
+            cy="353"
+            rx="152"
+            ry="86"
+            fill="url(#sunFlash)"
+            opacity="0.18"
+            transform="rotate(12 793 353)"
+          />
+
+          <ellipse
+            cx="613"
+            cy="602"
+            rx="110"
+            ry="61"
+            fill="url(#sunFlash)"
+            opacity="0.18"
+            transform="rotate(-8 613 602)"
+          />
+
+          <!--
+            SALPICADURA LATERAL GRANDE
+          -->
+          <path
+            d="
+              M337,327
+              C310,323 287,310 276,294
+              C265,278 271,266 286,269
+              C303,272 312,289 328,294
+              C342,299 355,294 365,286
+              C357,306 348,319 337,327
+              Z
+            "
+            fill="#cce8f3"
+            opacity="0.58"
+          />
+
+          <path
+            d="
+              M328,313
+              C308,306 295,294 290,283
+            "
+            fill="none"
+            stroke="#ffffff"
+            stroke-width="4"
+            stroke-linecap="round"
+            opacity="0.60"
+          />
+
+          <!--
+            GOTAS / SALPICADURAS.
+            Pocas, distribuidas alrededor del borde de la ola.
+          -->
+
+          <g opacity="0.86">
+
+            <ellipse cx="329" cy="226" rx="8" ry="12"
+                     fill="url(#bubbleFill)"
+                     transform="rotate(-22 329 226)"/>
+            <ellipse cx="329" cy="222" rx="3" ry="4"
+                     fill="#ffffff" opacity="0.78"/>
+
+            <ellipse cx="281" cy="257" rx="5" ry="7"
+                     fill="url(#bubbleFill)"
+                     transform="rotate(15 281 257)"/>
+            <ellipse cx="280" cy="255" rx="2" ry="2.5"
+                     fill="#ffffff" opacity="0.78"/>
+
+            <ellipse cx="238" cy="337" rx="9" ry="6"
+                     fill="url(#bubbleFill)"
+                     transform="rotate(-14 238 337)"/>
+            <ellipse cx="235" cy="335" rx="3" ry="2"
+                     fill="#ffffff" opacity="0.75"/>
+
+            <ellipse cx="273" cy="514" rx="7" ry="10"
+                     fill="url(#bubbleFill)"
+                     transform="rotate(18 273 514)"/>
+            <ellipse cx="271" cy="511" rx="2.5" ry="3"
+                     fill="#ffffff" opacity="0.76"/>
+
+            <ellipse cx="318" cy="559" rx="4.5" ry="6.5"
+                     fill="url(#bubbleFill)"/>
+            <ellipse cx="317" cy="557" rx="1.7" ry="2.3"
+                     fill="#ffffff" opacity="0.78"/>
+
+            <ellipse cx="365" cy="109" rx="5" ry="7"
+                     fill="url(#bubbleFill)"
+                     transform="rotate(-17 365 109)"/>
+
+            <ellipse cx="420" cy="75" rx="4" ry="5.5"
+                     fill="url(#bubbleFill)"/>
+
+            <ellipse cx="484" cy="54" rx="6" ry="4"
+                     fill="url(#bubbleFill)"
+                     transform="rotate(-12 484 54)"/>
+
+          </g>
+
+          <!--
+            PEQUEÑAS BURBUJAS DENTRO DE LA MASA
+          -->
+          <g opacity="0.56">
+            <circle cx="535" cy="255" r="4" fill="#ffffff"/>
+            <circle cx="554" cy="279" r="2.5" fill="#ffffff"/>
+            <circle cx="601" cy="231" r="3" fill="#e8f8fc"/>
+            <circle cx="632" cy="321" r="5" fill="#dff5fb"/>
+            <circle cx="687" cy="277" r="2.5" fill="#ffffff"/>
+            <circle cx="716" cy="472" r="4" fill="#e9f9fd"/>
+            <circle cx="599" cy="487" r="2.5" fill="#ffffff"/>
+            <circle cx="667" cy="548" r="3.5" fill="#e6f7fb"/>
+          </g>
+
+        </svg>
+      </div>
+
       <div class="container hero-inner">
 
         <div class="hero-content reveal">
@@ -1420,18 +1965,24 @@
 
             <div class="process-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none">
-                <path d="M4 10v4h4l7 4V6l-7 4H4Z"
-                      stroke="currentColor"
-                      stroke-width="1.7"
-                      stroke-linejoin="round"/>
-                <path d="M8 14l1.5 5"
-                      stroke="currentColor"
-                      stroke-width="1.7"
-                      stroke-linecap="round"/>
-                <path d="M18 9c1 1 1 5 0 6"
-                      stroke="currentColor"
-                      stroke-width="1.7"
-                      stroke-linecap="round"/>
+                <path
+                  d="M4 10v4h4l7 4V6l-7 4H4Z"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M8 14l1.5 5"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M18 9c1 1 1 5 0 6"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                />
               </svg>
             </div>
 
@@ -1526,7 +2077,6 @@
               <strong>
                 Frente
               </strong>
-
               <span>
                 2 espacios publicitarios.
               </span>
@@ -1536,7 +2086,6 @@
               <strong>
                 Parte trasera
               </strong>
-
               <span>
                 2 espacios publicitarios.
               </span>
@@ -2098,69 +2647,39 @@
     const bottleHosts = [...document.querySelectorAll("[data-bottle3d]")];
 
     function initBottle3D(host, sizeKind) {
-      const fallback =
-        host.querySelector(".bottle3d-fallback");
+      const fallback = host.querySelector(".bottle3d-fallback");
+      if (fallback) fallback.remove();
 
-      if (fallback) {
-        fallback.remove();
-      }
+      const scene = new THREE.Scene();
 
-      const scene =
-        new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(
+        30,
+        1,
+        0.01,
+        1000
+      );
 
-      const camera =
-        new THREE.PerspectiveCamera(
-          30,
-          1,
-          0.01,
-          1000
-        );
-
-      const renderer =
-        new THREE.WebGLRenderer({
-          antialias: true,
-          alpha: true,
-          powerPreference: "high-performance"
-        });
+      const renderer = new THREE.WebGLRenderer({
+        antialias: true,
+        alpha: true,
+        powerPreference: "high-performance"
+      });
 
       renderer.setPixelRatio(
-        Math.min(
-          window.devicePixelRatio || 1,
-          2
-        )
+        Math.min(window.devicePixelRatio || 1, 2)
       );
 
-      renderer.setSize(
-        1,
-        1,
-        false
-      );
+      renderer.setSize(1, 1, false);
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
+      renderer.setClearColor(0x000000, 0);
 
-      renderer.outputColorSpace =
-        THREE.SRGBColorSpace;
+      host.appendChild(renderer.domElement);
 
-      renderer.setClearColor(
-        0x000000,
-        0
-      );
-
-      host.appendChild(
-        renderer.domElement
-      );
-
-      const pmrem =
-        new THREE.PMREMGenerator(
-          renderer
-        );
-
-      const env =
-        new RoomEnvironment();
+      const pmrem = new THREE.PMREMGenerator(renderer);
+      const env = new RoomEnvironment();
 
       scene.environment =
-        pmrem.fromScene(
-          env,
-          0.045
-        ).texture;
+        pmrem.fromScene(env, 0.045).texture;
 
       env.dispose();
 
@@ -2178,17 +2697,10 @@
           1.8
         );
 
-      key.position.set(
-        4,
-        7,
-        7
-      );
-
+      key.position.set(4, 7, 7);
       scene.add(key);
 
-      const pivot =
-        new THREE.Group();
-
+      const pivot = new THREE.Group();
       scene.add(pivot);
 
       let model = null;
@@ -2203,9 +2715,7 @@
 
       function getBox(object) {
         object.updateMatrixWorld(true);
-
-        return new THREE.Box3()
-          .setFromObject(object);
+        return new THREE.Box3().setFromObject(object);
       }
 
       function centerModel(object) {
@@ -2217,13 +2727,8 @@
             new THREE.Vector3()
           );
 
-        object.position.sub(
-          center
-        );
-
-        object.updateMatrixWorld(
-          true
-        );
+        object.position.sub(center);
+        object.updateMatrixWorld(true);
       }
 
       function resizeAndFrame() {
@@ -2250,9 +2755,7 @@
 
         camera.updateProjectionMatrix();
 
-        if (!model) {
-          return;
-        }
+        if (!model) return;
 
         const box =
           getBox(pivot);
@@ -2290,10 +2793,7 @@
           Math.tan(vFov / 2);
 
         const horizontalDistance =
-          (Math.max(
-            size.x,
-            size.z
-          ) * 0.5) /
+          (Math.max(size.x, size.z) * 0.5) /
           Math.tan(hFov / 2);
 
         const extra =
@@ -2330,14 +2830,9 @@
       }
 
       function frameLoop() {
-        requestAnimationFrame(
-          frameLoop
-        );
+        requestAnimationFrame(frameLoop);
 
-        if (
-          autoRotate &&
-          model
-        ) {
+        if (autoRotate && model) {
           pivot.rotation.y +=
             autoRotateSpeed;
         }
@@ -2358,36 +2853,36 @@
           model =
             gltf.scene;
 
+          /*
+           * Bottle Master orientation already approved:
+           * rotate the actual GLB into the vertical website orientation.
+           */
+
           model.rotation.set(
             -Math.PI / 2,
             0,
             0
           );
 
+          /*
+           * IMPORTANT:
+           * Do not override materials here.
+           * The GLB itself is the approved final asset.
+           */
+
           model.traverse(
             (object) => {
 
-              if (!object.isMesh) {
-                return;
-              }
+              if (!object.isMesh) return;
 
-              object.castShadow =
-                false;
-
-              object.receiveShadow =
-                false;
+              object.castShadow = false;
+              object.receiveShadow = false;
 
             }
           );
 
-          centerModel(
-            model
-          );
-
-          pivot.add(
-            model
-          );
-
+          centerModel(model);
+          pivot.add(model);
           resizeAndFrame();
 
           window.addEventListener(
@@ -2402,7 +2897,6 @@
               (event) => {
 
                 dragging = true;
-
                 lastX =
                   event.clientX;
 
@@ -2460,7 +2954,6 @@
               "pointercancel",
               stopDrag
             );
-
           }
 
           frameLoop();

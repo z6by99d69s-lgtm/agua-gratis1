@@ -289,21 +289,21 @@
       display: flex;
       align-items: center;
       overflow: hidden;
-      background: #FFFFFF;
+      background: var(--white);
     }
 
     .hero::before {
       content: "";
       position: absolute;
-      top: -5%;
-      right: -2%;
-      width: 78%;
-      height: 112%;
+      top: -3%;
+      right: -3%;
+      width: 82%;
+      height: 108%;
       pointer-events: none;
       z-index: 0;
 
       background:
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 700' preserveAspectRatio='none'%3E%3Cdefs%3E%3ClinearGradient id='water' x1='0' y1='0' x2='1' y2='0'%3E%3Cstop offset='0%25' stop-color='%23d9edf5' stop-opacity='0.52'/%3E%3Cstop offset='26%25' stop-color='%23c5deea' stop-opacity='0.74'/%3E%3Cstop offset='56%25' stop-color='%239fc2d5' stop-opacity='0.84'/%3E%3Cstop offset='82%25' stop-color='%237096ae' stop-opacity='0.94'/%3E%3Cstop offset='100%25' stop-color='%237096ae' stop-opacity='1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M1000 0H760 C690 70 580 110 470 156 C345 208 270 265 292 331 C315 398 390 418 448 466 C505 513 499 575 440 619 C400 648 420 681 500 700 H1000 Z' fill='url(%23water)'/%3E%3Cpath d='M760 0 C690 70 580 110 470 156 C345 208 270 265 292 331 C315 398 390 418 448 466 C505 513 499 575 440 619 C400 648 420 681 500 700' fill='none' stroke='%23e9f7fb' stroke-opacity='0.78' stroke-width='10' stroke-linecap='round'/%3E%3Cpath d='M775 8 C710 76 603 116 484 166 C361 218 304 271 318 325 C333 382 401 408 460 455 C515 499 515 560 454 610' fill='none' stroke='%23ffffff' stroke-opacity='0.24' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E")
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 700' preserveAspectRatio='none'%3E%3Cdefs%3E%3ClinearGradient id='water' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%23dff1f8' stop-opacity='0.56'/%3E%3Cstop offset='22%25' stop-color='%23c6e1ec' stop-opacity='0.74'/%3E%3Cstop offset='47%25' stop-color='%239fc2d5' stop-opacity='0.84'/%3E%3Cstop offset='72%25' stop-color='%237096ae' stop-opacity='0.94'/%3E%3Cstop offset='100%25' stop-color='%237096ae' stop-opacity='1'/%3E%3C/linearGradient%3E%3ClinearGradient id='shine' x1='0' y1='0' x2='1' y2='0'%3E%3Cstop offset='0%25' stop-color='%23ffffff' stop-opacity='0.02'/%3E%3Cstop offset='50%25' stop-color='%23ffffff' stop-opacity='0.35'/%3E%3Cstop offset='100%25' stop-color='%23ffffff' stop-opacity='0.06'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M1000 0 H735 C667 76 576 101 480 142 C366 190 282 251 276 313 C270 375 340 419 430 454 C514 488 566 527 542 577 C519 627 456 655 433 700 H1000 Z' fill='url(%23water)'/%3E%3Cpath d='M735 0 C667 76 576 101 480 142 C366 190 282 251 276 313 C270 375 340 419 430 454 C514 488 566 527 542 577 C519 627 456 655 433 700' fill='none' stroke='url(%23shine)' stroke-width='12' stroke-linecap='round'/%3E%3Cpath d='M765 0 C699 70 604 111 494 152 C384 194 318 249 311 310 C304 365 366 402 445 435 C531 472 590 520 566 577' fill='none' stroke='%23ffffff' stroke-opacity='0.18' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E")
         center / 100% 100% no-repeat;
     }
 
@@ -1173,6 +1173,7 @@
     .next-section-hint {
       visibility: hidden !important;
     }
+
   </style>
 
   <style>
@@ -1419,24 +1420,18 @@
 
             <div class="process-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M4 10v4h4l7 4V6l-7 4H4Z"
-                  stroke="currentColor"
-                  stroke-width="1.7"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M8 14l1.5 5"
-                  stroke="currentColor"
-                  stroke-width="1.7"
-                  stroke-linecap="round"
-                />
-                <path
-                  d="M18 9c1 1 1 5 0 6"
-                  stroke="currentColor"
-                  stroke-width="1.7"
-                  stroke-linecap="round"
-                />
+                <path d="M4 10v4h4l7 4V6l-7 4H4Z"
+                      stroke="currentColor"
+                      stroke-width="1.7"
+                      stroke-linejoin="round"/>
+                <path d="M8 14l1.5 5"
+                      stroke="currentColor"
+                      stroke-width="1.7"
+                      stroke-linecap="round"/>
+                <path d="M18 9c1 1 1 5 0 6"
+                      stroke="currentColor"
+                      stroke-width="1.7"
+                      stroke-linecap="round"/>
               </svg>
             </div>
 
@@ -1531,6 +1526,7 @@
               <strong>
                 Frente
               </strong>
+
               <span>
                 2 espacios publicitarios.
               </span>
@@ -1540,6 +1536,7 @@
               <strong>
                 Parte trasera
               </strong>
+
               <span>
                 2 espacios publicitarios.
               </span>
@@ -2101,39 +2098,69 @@
     const bottleHosts = [...document.querySelectorAll("[data-bottle3d]")];
 
     function initBottle3D(host, sizeKind) {
-      const fallback = host.querySelector(".bottle3d-fallback");
-      if (fallback) fallback.remove();
+      const fallback =
+        host.querySelector(".bottle3d-fallback");
 
-      const scene = new THREE.Scene();
+      if (fallback) {
+        fallback.remove();
+      }
 
-      const camera = new THREE.PerspectiveCamera(
-        30,
-        1,
-        0.01,
-        1000
-      );
+      const scene =
+        new THREE.Scene();
 
-      const renderer = new THREE.WebGLRenderer({
-        antialias: true,
-        alpha: true,
-        powerPreference: "high-performance"
-      });
+      const camera =
+        new THREE.PerspectiveCamera(
+          30,
+          1,
+          0.01,
+          1000
+        );
+
+      const renderer =
+        new THREE.WebGLRenderer({
+          antialias: true,
+          alpha: true,
+          powerPreference: "high-performance"
+        });
 
       renderer.setPixelRatio(
-        Math.min(window.devicePixelRatio || 1, 2)
+        Math.min(
+          window.devicePixelRatio || 1,
+          2
+        )
       );
 
-      renderer.setSize(1, 1, false);
-      renderer.outputColorSpace = THREE.SRGBColorSpace;
-      renderer.setClearColor(0x000000, 0);
+      renderer.setSize(
+        1,
+        1,
+        false
+      );
 
-      host.appendChild(renderer.domElement);
+      renderer.outputColorSpace =
+        THREE.SRGBColorSpace;
 
-      const pmrem = new THREE.PMREMGenerator(renderer);
-      const env = new RoomEnvironment();
+      renderer.setClearColor(
+        0x000000,
+        0
+      );
+
+      host.appendChild(
+        renderer.domElement
+      );
+
+      const pmrem =
+        new THREE.PMREMGenerator(
+          renderer
+        );
+
+      const env =
+        new RoomEnvironment();
 
       scene.environment =
-        pmrem.fromScene(env, 0.045).texture;
+        pmrem.fromScene(
+          env,
+          0.045
+        ).texture;
 
       env.dispose();
 
@@ -2151,10 +2178,17 @@
           1.8
         );
 
-      key.position.set(4, 7, 7);
+      key.position.set(
+        4,
+        7,
+        7
+      );
+
       scene.add(key);
 
-      const pivot = new THREE.Group();
+      const pivot =
+        new THREE.Group();
+
       scene.add(pivot);
 
       let model = null;
@@ -2169,7 +2203,9 @@
 
       function getBox(object) {
         object.updateMatrixWorld(true);
-        return new THREE.Box3().setFromObject(object);
+
+        return new THREE.Box3()
+          .setFromObject(object);
       }
 
       function centerModel(object) {
@@ -2181,8 +2217,13 @@
             new THREE.Vector3()
           );
 
-        object.position.sub(center);
-        object.updateMatrixWorld(true);
+        object.position.sub(
+          center
+        );
+
+        object.updateMatrixWorld(
+          true
+        );
       }
 
       function resizeAndFrame() {
@@ -2209,7 +2250,9 @@
 
         camera.updateProjectionMatrix();
 
-        if (!model) return;
+        if (!model) {
+          return;
+        }
 
         const box =
           getBox(pivot);
@@ -2247,7 +2290,10 @@
           Math.tan(vFov / 2);
 
         const horizontalDistance =
-          (Math.max(size.x, size.z) * 0.5) /
+          (Math.max(
+            size.x,
+            size.z
+          ) * 0.5) /
           Math.tan(hFov / 2);
 
         const extra =
@@ -2284,9 +2330,14 @@
       }
 
       function frameLoop() {
-        requestAnimationFrame(frameLoop);
+        requestAnimationFrame(
+          frameLoop
+        );
 
-        if (autoRotate && model) {
+        if (
+          autoRotate &&
+          model
+        ) {
           pivot.rotation.y +=
             autoRotateSpeed;
         }
@@ -2307,36 +2358,36 @@
           model =
             gltf.scene;
 
-          /*
-           * Bottle Master orientation already approved:
-           * rotate the actual GLB into the vertical website orientation.
-           */
-
           model.rotation.set(
             -Math.PI / 2,
             0,
             0
           );
 
-          /*
-           * IMPORTANT:
-           * Do not override materials here.
-           * The GLB itself is the approved final asset.
-           */
-
           model.traverse(
             (object) => {
 
-              if (!object.isMesh) return;
+              if (!object.isMesh) {
+                return;
+              }
 
-              object.castShadow = false;
-              object.receiveShadow = false;
+              object.castShadow =
+                false;
+
+              object.receiveShadow =
+                false;
 
             }
           );
 
-          centerModel(model);
-          pivot.add(model);
+          centerModel(
+            model
+          );
+
+          pivot.add(
+            model
+          );
+
           resizeAndFrame();
 
           window.addEventListener(
@@ -2351,6 +2402,7 @@
               (event) => {
 
                 dragging = true;
+
                 lastX =
                   event.clientX;
 
@@ -2408,6 +2460,7 @@
               "pointercancel",
               stopDrag
             );
+
           }
 
           frameLoop();

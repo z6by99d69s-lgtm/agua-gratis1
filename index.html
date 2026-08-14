@@ -302,8 +302,29 @@
     rgba(112, 150, 174, 0) 76%
   );
     }
-
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -12%;
+  right: -16%;
+  width: 78%;
+  height: 124%;
+  background:
+    radial-gradient(
+      ellipse 72% 78% at 68% 50%,
+      rgba(112, 150, 174, 0.72) 0%,
+      rgba(112, 150, 174, 0.48) 46%,
+      rgba(112, 150, 174, 0.20) 66%,
+      rgba(112, 150, 174, 0) 80%
+    );
+  border-radius: 58% 42% 52% 48% / 34% 46% 54% 66%;
+  transform: rotate(-7deg);
+  pointer-events: none;
+  z-index: 0;
+}
     .hero-inner {
+      position: relative;
+z-index: 1;
       width: 100%;
       display: grid;
       grid-template-columns: 45% 55%;
